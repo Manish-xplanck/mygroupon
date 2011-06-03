@@ -1,9 +1,5 @@
 <?php
-/**
- * Config File of [rbac]
- *
- * @time 2011-05-27 17:29:30
- */
+
 $config["rbac"] =  array (
   'list' => 
   array (
@@ -1242,6 +1238,56 @@ $config["rbac"] =  array (
           'enabled' => false,
         ),
         'dbs_save' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'config' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'config_save' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'install' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'process_struct' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'process_admin' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'process_setting' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'process_test' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'process_clean' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'process_ends' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'process_lives' => 
         array (
           'name' => '',
           'enabled' => false,
