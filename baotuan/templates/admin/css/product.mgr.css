@@ -1,0 +1,13 @@
+.editor {
+	width: 500px;
+	height: 160px;
+}
+.img_scroll {
+	list-style: none;
+}
+.img_scroll li {
+	border-bottom: 1px solid #cccccc;
+}
+#img_li_TPL {
+	display: none;
+}

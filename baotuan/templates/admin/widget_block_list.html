@@ -1,0 +1,7 @@
+<!--{template @admin/header}--> <table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder"> <tr class="header"> <td colspan="3">[ <a href="?mod=widget"><b>布局管理</b></a> ] / 模块管理</td> </tr> <tr class="tr_nav"> <td width="20%" bgcolor="#F4F8FC">标记</td> <td width="20%" bgcolor="#F4F8FC">名称</td> <td bgcolor="#F4F8FC">操作</td> </tr> <!--{loop $list $flag $value}--> <tr> <td>{$flag}</td> <td> <font class="ini" title="widget.~@blocks.{$flag}.name">{echo $value['name']?$value['name']:'新添加模块'}</font> </td> <td align="center">
+[ <a href="?mod=widget&code=block&op=config&flag={$flag}">配置</a> ]
+[ <a href="?mod=widget&code=block&op=editor&flag={$flag}">编辑</a> ]
+[ <a href="?mod=widget&code=block&op=delete&flag={$flag}" onclick="javascript:return confirm('确定要删除吗？\n请先确认所有页面中都没有加载此模块，否则会造成不可预料错误！');">删除</a> ]
+</td> </tr> <!--{/loop}--> <tr class="footer"> <td colspan="3"> <a href="?mod=widget&code=block&op=add&class=diy">创建模块</a> </td> </tr> </table>
+{~ui('loader')->js('#admin/js/sdb.parser')}
+{template @admin/footer}

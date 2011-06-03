@@ -1,0 +1,4 @@
+<!--{template @admin/header}--> <table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder"> <tr class="header"> <td colspan="5">配送方式列表</td> </tr> <tr> <td width="10%">编号</td> <td width="30%">配送方式</td> <td width="20%">状态</td> <td width="10%">排序</td> <td width="10%">管理</td> </tr> <!--{if empty($list)}--> <tr><td colspan="5">暂时还没有任何配送方式！</td></tr> <!--{else}--> <!--{loop $list $i $value}--> <tr onmouseover="this.className='tr_hover'" onmouseout="this.className='tr_normal'"> <td>{$value['id']}</td> <td>{$value['name']}</td> <td>{echo ($value['enabled']=='true')?'已启用':'未启用'}</td> <td>{$value['order']}</td> <td> <a href="?mod=express&code=edit&id={$value['id']}">编辑</a>
+- 
+<a href="?mod=express&code=del&id={$value['id']}" onclick="return confirm('确认删除吗？')">删除</a> </td> </tr> <!--{/loop}--> <!--{/if}--> <tr> <td colspan="5"><a href="?mod=express&code=add">添加</a></td> </tr> </table>
+{template @admin/footer}

@@ -1,0 +1,58 @@
+{~ui('loader')->css('@address.selector')}
+{eval $aid = get('aid', 'int')}
+<div class="address_list">
+<p class="title">请选择收货地址：</p>
+<ul>
+<!--{loop logic('address')->GetList(user()->get('id')) $address}-->
+<li><input type="radio" name="address_id" value="{$address['id']}"{if $aid == $address['id']} checked="checked"{/if} /> {$address['name']} - {$address['region']}{$address['address']} - {$address['phone']}</li>
+<!--{/loop}-->
+<li id="li_address_new" class="li_address_new"><input type="radio" name="address_id" value="0" /> 使用其他地址</li>
+{~logic('address')->import()->wlist()}
+</ul>
+</div>
+<div id="address_new" class="address_new">
+<form id="address_new_form" method="post" action="address.save">
+<table>
+<tr>
+<td width="100"></td><td></td>
+</tr>
+<tr>
+<td class="left">省市区：</td>
+<td>
+<select id="addr_province" name="province" class="validate[required]"></select>
+<select id="addr_city" name="city" class="validate[required]"></select>
+<select id="addr_country" name="country" class=""></select>
+</td>
+</tr>
+<tr>
+<td class="left">街道地址：</td>
+<td>
+<input id="addr_address" name="address" type="text" class="validate[required,minSize[5],maxSize[30]]" />
+</td>
+</tr>
+<tr>
+<td class="left">邮政编码：</td>
+<td>
+<input id="addr_zip" name="zip" type="text" class="validate[optional,custom[number],minSize[6],maxSize[6]]" />
+</td>
+</tr>
+<tr>
+<td class="left">收件人姓名：</td>
+<td>
+<input id="addr_name" name="name" type="text" class="validate[required,minSize[2],maxSize[8]]]" />
+</td>
+</tr>
+<tr>
+<td class="left">电话号码：</td>
+<td>
+<input id="addr_phone" name="phone" type="text" class="validate[required,custom[phone]]" />
+</td>
+</tr>
+<tr>
+<td></td>
+<td><input id="address_submit_button" class="button" type="button" value=" 保 存 " /> <font id="address_submit_result"></font></td>
+</tr>
+</table>
+</form>
+</div>
+{~ui('loader')->js('@address.selector')}

@@ -1,0 +1,40 @@
+{~ui('loader')->addon('uploader.swf')}
+{~ui('loader')->css('@jquery.goouploader')}
+{~ui('loader')->js('@jquery.goouploader')}
+<div id="GooUploader"></div>
+{eval session_start()}
+{eval $CCPRE = ini('settings.cookie_prefix')}
+<script type="text/javascript">
+var cfg = {
+width: 500,
+height: 160,
+multiple: true,
+file_size_limit: '{$allowSize} KB',
+file_types: '{$allowExts}',
+file_types_description: '请选择需要上传的文件',
+// COOKIE POST
+post_params: {
+'PHPSESSID': '{echo session_id()}',
+'{$CCPRE}sid': '{echo $_COOKIE[$CCPRE."sid"]}',
+'{$CCPRE}ajhAuth': '{echo $_COOKIE[$CCPRE."ajhAuth"]}',
+'HTTP_USER_AGENT': '{echo $_SERVER["HTTP_USER_AGENT"]}'
+},
+btn_add_text: '添加',
+btn_up_text: '上传',
+btn_cancel_text: '放弃',
+btn_clean_text: '清空',
+op_del_text: '删除此文件',
+op_up_text: '上传此文件',
+op_fail_text: '上传失败',
+op_ok_text: '上传成功',
+op_no_text: '取消上传',
+upload_url: 'index.php?mod=upload&code=image',
+flash_url: 'static/addon/SwfUploader/swfupload.swf',
+uploaded_callback: function(file) {
+$.hook.call('swfuploaded', file);
+}
+};
+$(document).ready(function(){
+$.createGooUploader($("#GooUploader"), cfg);
+});
+</script>
