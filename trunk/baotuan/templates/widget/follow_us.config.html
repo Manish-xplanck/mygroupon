@@ -1,0 +1,47 @@
+<!--{template @admin/header}-->
+<form action="?mod=widget&code=block&op=config_save" method="post" enctype="multipart/form-data">
+<table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder">
+<tr class="header">
+<td colspan="2">微博链接设置 / <a href="?mod=widget&code=block">返回</a></td>
+</tr>
+<tr>
+<td class="td_title"><strong>新浪微博用户名：</strong>
+</td>
+<td>
+<input size="50" name="data[sina]" type="text" id="qq" value="{ini:data.follow_us.sina}" />
+</td>
+</tr>
+<tr>
+<td class="td_title"><strong>腾讯微博用户名：</strong>
+</td>
+<td>
+<input size="50" name="data[qq]" type="text" id="msn" value="{ini:data.follow_us.qq}" />
+</td>
+</tr>
+<tr>
+<td class="td_title"><strong>网易微博用户名：</strong>
+</td>
+<td>
+<input size="50" name="data[163]" type="text" id="aliww" value="{ini:data.follow_us.163}" />
+</td>
+</tr>
+<tr>
+<td class="td_title"><strong>搜狐微博用户名：</strong>
+</td>
+<td>
+<input size="50" name="data[sohu]" type="text" id="phone" value="{ini:data.follow_us.sohu}" />
+</td>
+</tr>
+<tr>
+<td colspan="2" class="td_hi">
+使用<a href="http://www.jishigou.net/" target="_blank">记事狗开源微博系统</a>，搭建自己的微博网站！
+</td>
+</tr>
+</table>
+<br/>
+<center>
+<input type="hidden" name="flag" value="follow_us" />
+<input type="submit" class="button" name="submit" value="保 存">
+</center>
+</form>
+{template @admin/footer}

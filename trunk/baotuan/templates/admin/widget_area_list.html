@@ -1,0 +1,7 @@
+<!--{template @admin/header}--> <table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder"> <tr class="header"> <td colspan="4">布局管理 / [ <a href="?mod=widget&code=block"><b>模块管理</b></a> ]</td> </tr> <tr class="tr_nav"> <td width="20%" bgcolor="#F4F8FC">标记</td> <td width="20%" bgcolor="#F4F8FC">名称</td> <td width="20%" bgcolor="#F4F8FC">状态</td> <td bgcolor="#F4F8FC">操作</td> </tr> <!--{loop $list $flag $value}--> <tr> <td>{$flag}</td> <td><font class="ini" title="widget.{$flag}.name">{echo $value['name']?$value['name']:'新侦测模块'}</font></td> <td>
+加载了 <b style="font-size:12pt;">{echo count($value['blocks'])}</b> 个模块
+</td> <td align="center">
+[ <a href="?mod=widget&code=config&flag={$flag}">管理</a> ]
+</td> </tr> <!--{/loop}--> </table>
+{~ui('loader')->js('#admin/js/sdb.parser')}
+{template @admin/footer}

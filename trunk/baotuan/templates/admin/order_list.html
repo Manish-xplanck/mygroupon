@@ -1,0 +1,32 @@
+<!--{template @admin/header}--> <div class="header"> <a href="?mod=order&code=vlist">[ 订单列表 ]</a> </div>
+{~ui('isearcher')->load('admin.order_list')}
+<div class="export_link"> <a class="button" href="?mod=export&code=order&referrer={echo urlencode($_SERVER['QUERY_STRING'])}">导出数据</a> </div> <table id="orderTable" cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder"> <thead> <tr class="tr_nav"> <td width="15%">订单信息</td> <td width="10%">用户信息</td> <td width="10%">下单时间</td> <td width="10%">订单金额</td> <td width="10%">实付金额</td> <td width="10%">订单操作</td> </tr> </thead> <tbody> <!--{loop $list $one}--> <tr> <td>
+{$one['product']['flag']}
+<br/>
+{$one['orderid']}
+</td> <td>
+{if user($one['userid'])->get('qq') != ''}
+<a title="点击打开QQ聊天框" href="http://wpa.qq.com/msgrd?v=3&uin={echo user($one['userid'])->get('qq')}&site=qq&menu=yes" target="_blank">{echo user($one['userid'])->get('name')}</a>
+{else}
+{echo user($one['userid'])->get('name')}
+{/if}
+<br/>
+{echo user($one['userid'])->get('phone')}
+</td> <td>
+{echo timebefore($one['buytime'])}
+</td> <td>
+￥{echo $one['productprice']*$one['productnum']+$one['expressprice']}
+</td> <td>
+{if $one['pay']==1}
+￥{$one['paymoney']}
+{else}
+还未支付
+{/if}
+</td> <td>
+{if $one['status'] == ORD_STA_Normal}
+{echo logic('order')->PROC_Name($one['process'])}
+{else}
+{echo logic('order')->STA_Name($one['status'])}
+{/if}
+<br/> <a href="?mod=order&code=process&id={$one['orderid']}&referrer={echo urlencode($_SERVER['QUERY_STRING'])}">[ 处理订单 ]</a> </td> </tr> <!--{/loop}--> </tbody> <tfoot> <tr> <td colspan="6">{~page_moyo()}</td> </tr> </tfoot> </table>
+{template @admin/footer}

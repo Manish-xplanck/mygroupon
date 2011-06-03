@@ -1,0 +1,32 @@
+<!--{template @admin/header}--> <table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder"> <tr class="header"> <td><div class="NavaL ntj">程序版本信息</div></td> </tr> <tr> <td>当前所用天天团购版本：{SYS_VERSION}&nbsp;{SYS_BUILD}</b>&nbsp;&nbsp;[<a href="admin.php?mod=upgrade"><b>检查更新</b></a>]
+<div id="ups_alert" style="display:none;">
+当前服务器上的新版本：<b><font id="ups_version"></font></b>，<a href="admin.php?mod=upgrade"><span style="color:red;"><u><b>点此进行在线升级</b></u></span></a> </div> </td> </tr> <tr class="header"> <td><div class="NavaL nlj">团购常用操作</div></td> </tr> <tr> <td> <span class="fred"><b>1、必要设置</b></span>：
+<a href="admin.php?mod=service&code=sms">短信接口</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="admin.php?mod=service&code=mail">邮件设置</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="admin.php?mod=payment">支付接口</a><br/>
+2、开团步骤：
+1）<a href="admin.php?mod=tttuangou&code=addcity">添加城市</a> (<a href="admin.php?mod=tttuangou&code=city">管理</a>)&nbsp;&nbsp;|&nbsp;&nbsp;
+2）<a href="admin.php?mod=tttuangou&code=addseller">添加商家</a> (<a href="admin.php?mod=tttuangou&code=mainseller">管理</a>)&nbsp;&nbsp;|&nbsp;&nbsp;
+3）<a href="admin.php?mod=product&code=add">添加产品</a> (<a href="admin.php?mod=product&code=vlist">管理</a>) &gt;&gt;
+<span class="fred">成功！</span><br/>
+3、售后管理：
+<a href="admin.php?mod=order&code=vlist">订单管理</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="admin.php?mod=coupon&code=vlist">团购券管理</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="admin.php?mod=delivery&code=vlist">发货管理</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="admin.php?mod=tttuangou&code=mainfinder">返利管理</a> </td> </tr> </table> <table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder"> <tr class="header"> <td colspan="12"> <div class="NavaL ndt">天天团购官方动态</div> </td> </tr> <tr> <td id="recommend">正在载入中...</td> </tr> </table> <!--{if $statistic}--> <table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder datacount"> <tr class="header"> <td colspan="6"> <div class="NavaL nkj">网站数据统计</div> </td> </tr> <tr> <td>用户数：<b><a href="{$statistic['system_members']['url']}">{$statistic['system_members']['total']}</a></b></td> <td>商家数：<b><a href="{$statistic['tttuangou_seller']['url']}">{$statistic['tttuangou_seller']['total']}</a></b></td> <td>城市数：<b><a href="{$statistic['tttuangou_city']['url']}">{$statistic['tttuangou_city']['total']}</a></b></td> <td>订阅数：<b><a href="{$statistic['tttuangou_subscribe']['url']}">{$statistic['tttuangou_subscribe']['total']}</a></b></td> <td>问答数：<b><a href="{$statistic['tttuangou_question']['url']}">{$statistic['tttuangou_question']['total']}</a></b></td> <td>反馈信息：<b><a href="{$statistic['tttuangou_usermsg']['url']}">{$statistic['tttuangou_usermsg']['total']}</a></b></td> </tr> <tr> <td>产品数：<b><a href="{$statistic['tttuangou_product']['url']}">{$statistic['tttuangou_product']['total']}</a></b></td> <td>订单数：<b><a href="{$statistic['tttuangou_order']['url']}">{$statistic['tttuangou_order']['total']}</a></b></td> <td>团购券：<b><a href="{$statistic['tttuangou_ticket']['url']}">{$statistic['tttuangou_ticket']['total']}</a></b></td> <td>等待发货：<b><a href="{$statistic['express_wait_count']['url']}">{$statistic['express_wait_count']['total']}</a></b></td> <td>邮件队列：<b><a href="{$statistic['cron_length']['url']}">{$statistic['cron_length']['total']}</a></b></td> <td>数据库：<b><a href="{$statistic['data_length']['url']}">{$statistic['data_length']['total']}</a></b></td> </tr> </table> <!--{/if}--> <table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder"> <tr class="header"> <td colspan="4"> <div class="NavaL nlnk">天天团购帮助链接</div> </td> </tr> <tr> <td><A HREF="http://www.tttuangou.net/download.html" target="_blank" title="查看系统使用手册">使用手册</A>&nbsp;|&nbsp;<A HREF="http://cenwor.com/forumdisplay.php?fid=13" target=_blank>论坛交流</A>&nbsp;|&nbsp;<A HREF="http://cenwor.com/forumdisplay.php?fid=13&filter=type&typeid=3" target=_blank>Bug反馈</A></td> <td><A HREF="http://cenwor.com/shop/brand.php?id=7" target=_blank><font color=green>在线购买短信发送量</font></A></td> <td><A HREF="http://cenwor.com/thread-3955-1-1.html" target=_blank><font color=blue>免费开通支付宝专用接口</font></A></td> <td><A HREF="http://cenwor.com/shop/brand.php?id=7" target=_blank><font color=red>购买去版权信息的授权</font></A></td> </tr> </table> <table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder"> <tr class="header"> <td colspan="12"> <div class="NavaL ntj">相关系统推荐</div> </td> </tr> <tr> <td><A HREF="http://www.jishigou.net" target=_blank title="最热门好用的互动社区系统">记事狗：开源微博系统</A></td> <td><A HREF="http://aijuhe.net/money" target=_blank title="专题是门户吸引流量的重要手段，爱聚合可自动建专题">爱聚合：专题网赚系统</A></td> <td><A HREF="http://www.ijuhe.net/usd.html" target=_blank title="根据中文自动抓英文内容、建英文网站">iJuhe：英文网赚系统</A></td> <td><A HREF="http://www.wangzhuanbao.net/qian.html" target=_blank title="最全面采集方式+最强的伪原创，无缝集成到主流系统后台使用">网赚宝：BBS/CMS建站必备</A></td> </tr> </table> <!--{if $check_upgrade}--> <script language="JavaScript" type="text/javascript" src="admin.php?mod=upgrade&code=check&js=1"></script> <!--{/if}--> <script type="text/javascript">
+$(document).ready(function()
+{
+$.get('admin.php?mod=index&code=recommend', function(data)
+{
+$('#recommend').html(data);
+});
+$.get('admin.php?mod=index&code=upgrade_check', function(data){
+if (data != 'noups')
+{
+$('#ups_version').html(data);
+$('#ups_alert').slideDown();
+}
+});
+});
+</script>
+{template @admin/footer} 

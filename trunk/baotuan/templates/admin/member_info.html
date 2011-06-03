@@ -1,0 +1,13 @@
+<!--{template @admin/header}--> <form method="post" action="{$action}"> <INPUT TYPE="hidden" name='uid' value={$this->ID}> <INPUT TYPE="hidden" name='old_username' value={$username}> <a name="{$this->Title} - {$username}"></a> <table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder"> <tr class="header"> <td colspan="2">{$this->Title} - {$username}</td> </tr> <tr> <td width="40%" bgcolor="#F4F8FC"><b>用户名:</b><br> <span class="smalltxt">如不是特别需要，请不要修改用户名</span></td> <td><!--{if $uid < 2}--> <input type="text" size="30" name="username" value="{$username}" readonly> <!--{ELSE}--> <input type="text" size="30" name="username" value="{$username}"> <!--{/IF}--> </td> </tr> <tr> <td width="40%" bgcolor="#F4F8FC"><b>账户余额:</b><BR> <span class="smalltxt">可通过充值、扣费来修改账户余额</span></td> <td> <input type="text" size="10" name="money" value="{$money}" disabled readonly="true"/> <select name="moneyOps"> <option value="plus">充值</option> <option value="less">扣费</option> </select> <input type="text" size="10" name="moneyMoved" value="" />
+元
+</td> </tr> <tr> <td width="40%" bgcolor="#F4F8FC"><b>新密码:</b><br> <span class="smalltxt">如果不更改密码此处请留空</span></td> <td><input type="text" size="30" name="password" value> </td> </tr> <tr> <td width="40%" bgcolor="#F4F8FC"><b>用户角色:</b><br> <span class="smalltxt">用户在网站里属于哪种角色</span></td> <td> <!--{if $uid < 2}-->
+{$role_name}
+<!--{else}-->
+{$role_select}
+<!--{/if}--> </td> </tr> <tr> <td width="40%" bgcolor="#F4F8FC"><b>性别:</b></td> <td> {$gender_radio}</td> </tr> <tr> <td width="40%" bgcolor="#F4F8FC"><b>Email:</b></td> <td><input type="text" size="30" name="email" value="{$email}"> </td> </tr> <tr> <td width="40%" bgcolor="#F4F8FC"><b>手机:</b></td> <td><input type="text" size="30" name="phone" value="{$phone}"> </td> </tr> <tr> <td width="40%" bgcolor="#F4F8FC"><b>注册 IP:</b></td> <td><input type="text" size="30" name="regip" value="{$regip}"> </td> </tr> </table> <center> <input type="submit" class="abutton" name="editsubmit" value="提 交"> </center> </form> <br> <table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder"> <tr class="header"> <td colspan="3">该用户消费明细(余额：{$money['money']}元)</td> </tr>
+{loop $log $i $value}
+<tr> <td width="20%" bgcolor="#F4F8FC"><b>{$value['name']}</b></td> <td width="20%">{eval echo date('Y-m-d H:i:s',$value['time']);}</td> <td>{$value['intro']}</td> </tr>
+{/loop}
+</table>
+{$page_arr}
+{template @admin/footer}

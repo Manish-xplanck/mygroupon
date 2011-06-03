@@ -1,0 +1,12 @@
+<!--{template @admin/header}--> <table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder"> <tr class="header"> <td colspan="4">[ {echo ini('widget.'.$area_name.'.name')} ] 已经加载的模块 / [ <a href="?mod=widget"><b>返回</b></a> ]</td> </tr> <tr> <td width="20%" bgcolor="#F4F8FC">标记</td> <td width="20%" bgcolor="#F4F8FC">名称</td> <td width="10%" bgcolor="#F4F8FC">状态</td> <td bgcolor="#F4F8FC">操作</td> </tr> <!--{loop $list $flag $one}--> <tr id="tr_of_{$flag}"> <td>{$flag}</td> <td>{$blocks[$flag]['name']}</td> <td> <font class="ini" title="widget.{$area_name}.blocks.{$flag}.enabled"></font> </td> <td> <a href="javascript:area_block_remove('{$area_name}', '{$flag}');">删除</a> <font id="block_remove_result"></font>
+[ <a href="?mod=widget&code=block&op=config&flag={$flag}">配置</a> ]
+[ <a href="?mod=widget&code=block&op=editor&flag={$flag}">编辑</a> ]
+</td> </tr> <!--{/loop}--> <tr class="footer"> <td colspan="4">
+模块：
+<select id="block_flag">
+{loop $blocks $flag $block}
+<option value="{$flag}">{$block['name']}</option>
+{/loop}
+</select> <input type="button" value="添加" onclick="javascript:area_block_add('{$area_name}');" /> <font id="block_add_result"></font> </td> </tr> </table>
+{~ui('loader')->js('#admin/js/sdb.parser')}
+{template @admin/footer}

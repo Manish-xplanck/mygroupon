@@ -1,0 +1,21 @@
+<!--{template @admin/header}-->
+{~ui('loader')->js('#admin/js/sdb.parser')}
+<table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder"> <tr class="header"> <td colspan="6">短信服务器通道列表</td> </tr> <tr class="banner"> <td colspan="6">
+是否开启自动重发功能？
+<font class="ini" title="service.sms.autoERSend"></font>
+[ 开启后系统会自动检测短信中的敏感词，自动用空格间隔开并重发 ]
+</td> </tr> <tr class="tr_nav"> <td width="5%" bgcolor="#F4F8FC">编号</td> <td width="12%" bgcolor="#F4F8FC">名称</td> <td width="30%" bgcolor="#F4F8FC">说明</td> <td width="16%" bgcolor="#F4F8FC">发送统计</td> <td width="16%" bgcolor="#F4F8FC">启用状态</td> <td width="12%" align="center" bgcolor="#F4F8FC">管理</td> </tr> <!--{loop $list $one}--> <tr> <td>{$one['id']}</td> <td>{$one['name']}</td> <td>{$drivers[$one['flag']]['intro']}</td> <td>{$one['count']}</td> <td> <font class="dbf" title="id:{$one['id']}@service/enabled">{$one['enabled']}</font>
+{if $one['enabled'] == 'true'}
+<font class="status" title="{$one['id']}"></font>
+{/if}
+</td> <td align="center">
+[ <a href="?mod=service&code=sms&op=edit&id={$one['id']}">设置</a> ]
+</td> </tr> <!--{/loop}--> <tr> <td colspan="6">
+输入手机号码：<input id="phone" type="text" />
+输入短信内容：<input id="content" type="text" /> <input type="button" value="发送测试短信" onclick="javascript:smsTest();" class="is_submit_button" /> </td> </tr> </table> <script type="text/javascript">
+function smsTest()
+{
+window.location = '?mod=service&code=sms&op=test&phone='+document.getElementById('phone').value+'&content='+encodeURIComponent(document.getElementById('content').value);
+}
+</script>
+{template @admin/footer}

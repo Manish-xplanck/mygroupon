@@ -1,0 +1,48 @@
+{~ui('loader')->css('@pay.selector')}
+{eval
+$me_money = user()->get('money')*1;
+$allowSelfPay = false;
+$remain_money = $pay_money - $me_money;
+}
+<div id="paytype_list" class="paytype_list">
+<p class="title">请选择支付方式</p>
+<table width="100%" border="0" class="P_diso">
+<tr>
+<td colspan="3">
+<p class="P_diso_1">
+<span style="float:left">您当前账户余额：{$me_money} 元</span>
+<span style="float:right">
+{if $me_money > 0 && $me_money < $pay_money}
+<input type="checkbox" id="payment_use_surplus" value="true" /> 是否使用余额支付
+{elseif $me_money >= $pay_money}
+{eval $allowSelfPay = true}
+可以使用余额付款
+{/if}
+</span>
+</p>
+<p class="P_diso_2">
+<font id="payment_total_money">您总共需要支付{$pay_money}元</font>
+<font id="payment_remain_money">扣除您帐户的{$me_money}元后，您还需要支付{$remain_money}元</font>
+<div id="payment_clear"></div>
+</p>
+</td>
+</tr>
+{loop logic('pay')->GetList() $i $pay}
+{if !$allowSelfPay && $pay['code'] == 'self'}
+{eval continue}
+{/if}
+{if $pay['code'] == 'cod' && $product_type != 'stuff'}
+{eval continue}
+{/if}
+{if $pay_money <=0 && $pay['code'] != 'self'}
+{eval continue}
+{/if}
+<tr>
+<td width="4%"><input name="payment_id" type="radio" value="{$pay['id']}" /></td>
+<td width="20%"><img src="static/images/pay/{$pay['code']}.gif" /></td>
+<td width="66%">{$pay['detail']}</td>
+</tr>
+{/loop}
+</table>
+</div>
+{~ui('loader')->js('@pay.selector')}

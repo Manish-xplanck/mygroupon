@@ -1,0 +1,25 @@
+<!--{template @admin/header}--> <script type="text/javascript">
+var __Global_OID = "{$order['orderid']}";
+</script> <div class="header">
+物流信息 / <a href="?mod=order&code=process&id={$oid}">[ 返回 ]</a> </div> <table id="orderTable" cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder"> <tbody> <tr> <td class="tr_nav tr_center" colspan="4">
+配送信息
+</td> </tr> <tr> <td class="td_title">产品名称：</td> <td class="td_content">{$order['product']['flag']}</td> <td class="td_title">购买数量：</td> <td class="td_content"><b>{$order['productnum']}</b></td> </tr> <tr> <td class="td_title">订单编号：</td> <td class="td_content">{$order['orderid']}</td> <td class="td_title">下单会员：</td> <td class="td_content">{$user['name']}</td> </tr> <tr> <td class="td_title">支付方式：</td> <td class="td_content">{$payment['name']}</td> <td class="td_title">支付金额：</td> <td class="td_content">{$order['paymoney']}</td> </tr> <tr> <td class="td_title">配送方式：</td> <td class="td_content">{$express['name']}</td> <td class="td_title">运费：</td> <td class="td_content">{$order['expressprice']}</td> </tr> <tr> <td class="td_title">收货地址：</td> <td class="td_content" colspan="2">{$address['region']} {$address['address']}</td> <td class="td_content">邮编：{$address['zip']}</td> </tr> <tr> <td class="td_title">收货人：</td> <td class="td_content">{$address['name']}</td> <td class="td_title">联系电话：</td> <td class="td_content">{$address['phone']}</td> </tr> <tr> <td class="td_title">买家附言：</td> <td class="td_content" colspan="3">
+{$order['extmsg']}
+</td> </tr> <tr> <td class="td_title">订单备注：</td> <td class="td_content" colspan="3">
+{$order['remark']}
+</td> </tr> <tr> <td class="tr_nav tr_center" colspan="4">
+物流信息
+</td> </tr> <tr> <td class="td_title">运单号码：</td> <td class="td_content" colspan="3">
+{if $order['invoice'] == ''}
+<input id="trackingno" type="text" size="32" /> <input id="submiter" type="button" value="上传单号" /> <font id="submit_result"></font>
+{else}
+{$order['invoice']}
+{/if}
+</td> </tr>
+{if $order['invoice'] != '' && false}
+<tr> <td class="td_title">物流跟踪：</td> <td class="td_content" colspan="3">
+正在开发中
+</td> </tr>
+{/if}
+</tbody> </table>
+{template @admin/footer}

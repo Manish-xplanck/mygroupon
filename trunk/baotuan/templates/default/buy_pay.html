@@ -1,0 +1,31 @@
+<!--{template header}-->
+{~ui('loader')->js('@jquery.hook')}
+{echo ui('loader')->js('@pay/'.$pay['code'])}
+<div class="m960">
+<div class="t_l">
+<div class="t_area_out">
+<div class="t_area_in">
+<p class="cur_title">订单支付</p>
+<div class="sect">
+<div class="nleftL" style="font-size:14px; line-height:26px;">
+产品名称：{$order['product']['flag']}<br/>
+订单编号：<span class="B R">{$order['orderid']}</span><br/>
+应付总额：<span class="B R">{$order['paymoney']}</span> 元<br/>
+支付方式：{$pay['name']}
+</div>
+<style type="text/css">
+input{cursor:pointer;height:30px;padding:1px 13px;border-color:#999;border-style:solid;border-width:1px; font-size:14px; font-weight:600;}
+</style>
+{$payment_linker}
+<div class="sect">
+<a href="?mod=buy&code=order&id={$order['orderid']}">点此选择其他支付方式</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="t_r">
+{~ui('widget')->load()}
+</div>
+</div>
+<!--{template footer}-->

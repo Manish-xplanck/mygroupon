@@ -1,0 +1,26 @@
+<!--{template "header"}-->
+<script type="text/javascript">
+$(document).ready(function(){
+if (readCookie('ihv') != 'yes')
+{
+$('#howdo_helps').show();
+}
+});
+function howdo_hidden()
+{
+$('#howdo_helps').slideUp();
+writeCookie('ihv', 'yes', 1);
+}
+</script>
+<div id="howdo_helps">
+<div class="howdo_close"><a href="javascript:howdo_hidden();">¹Ø±Õ</a></div>
+<a href="{$help_link}" style="display:block;width:951px;height:110px;"></a>
+</div>
+{~ui('loader')->js('@time.lesser')}
+<div class="m960">
+<!--{eval ui('igos')->load($product)}-->
+<div class="t_r">
+<!--{~ui('widget')->load('index_home')}-->
+</div>
+</div>
+<!--{template "footer"}-->
