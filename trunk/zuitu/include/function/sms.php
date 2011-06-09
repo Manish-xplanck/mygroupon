@@ -1,4 +1,7 @@
 <?php
+
+//短信接口地址："http://notice.zuitu.com/sms?user={$user}&pass={$pass}&phones={$phone}&content={$content}";
+//http://sms.10086si.com/smsComputer/smsComputersend.asp?zh=短信通帐号&mm=短信通密码&hm=发送的手机号码&nr=发送的短信内容&dxlbid=18
 function sms_send($phone, $content) {
 	global $INI;
 	if (mb_strlen($content, 'UTF-8') < 20) {
@@ -7,7 +10,7 @@ function sms_send($phone, $content) {
 
 	/* include customsms function */
 	$smsowner_file = dirname(__FILE__) . '/smsowner.php';
-	if (file_exists($smsowner_file)) { 
+	if (file_exists($smsowner_file)) {
 		require_once( $smsowner_file);
 		if(function_exists('sms_send_owner')) {
 			return sms_send_owner($phone, $content);
@@ -15,13 +18,18 @@ function sms_send($phone, $content) {
 	}
 	/* end include */
 
-	$user = strval($INI['sms']['user']); 
-	$pass = strtolower(md5($INI['sms']['pass']));
+	$user = strval($INI['sms']['user']);
+	$pass = strval($INI['sms']['pass']);
+	//$pass = strtolower(md5($INI['sms']['pass']));
 	if(null==$user) return true;
-	$content = urlEncode($content);
-	$api = "http://notice.zuitu.com/sms?user={$user}&pass={$pass}&phones={$phone}&content={$content}";
+	$content = urlEncode(iconv("UTF-8","GB2312", $content));
+	$api = "http://sms.10086si.com/smsComputer/smsComputersend.asp?zh={$user}&mm={$pass}&hm={$phone}&nr={$content}&dxlbid=18";
 	$res = Utility::HttpRequest($api);
-	return trim(strval($res))=='+OK' ? true : strval($res);
+	//echo($api);
+	//echo('result:'.$res);
+	//return ;
+	//return trim(strval($res))=='+OK' ? true : strval($res);
+	return trim(strval($res))=='' ? true : strval($res);
 }
 
 function sms_secret($mobile, $secret, $enable=true) {
@@ -39,7 +47,7 @@ function sms_bind($mobile, $secret) {
 
 function sms_coupon($coupon, $mobile=null) {
 	global $INI;
-	if ( $coupon['consume'] == 'Y' 
+	if ( $coupon['consume'] == 'Y'
 			|| $coupon['expire_time'] < strtotime(date('Y-m-d'))) {
 		return $INI['system']['couponname'] . '已失效';
 	}
