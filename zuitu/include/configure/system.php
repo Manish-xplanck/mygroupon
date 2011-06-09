@@ -1,0 +1,27 @@
+<?php
+$value = array (
+  'wwwprefix' => 'http://localhost:800/zuituware',
+  'imgprefix' => 'http://localhost:800/zuituware',
+  'cssprefix' => 'http://localhost:800/zuituware',
+  'sitename' => '天天抱团网',
+  'sitetitle' => '精品团购每一天',
+  'abbreviation' => '天天抱团',
+  'couponname' => '优惠券',
+  'currency' => '¥',
+  'currencyname' => 'CNY',
+  'timezone' => 'Etc/GMT-8',
+  'invitecredit' => '10',
+  'sideteam' => '2',
+  'conduser' => 1,
+  'partnerdown' => 0,
+  'gzip' => 1,
+  'kefuqq' => '307928339',
+  'kefumsn' => 'caojianlong2004@163.com',
+  'mobileurl' => '',
+  'icp' => '',
+  'statcode' => '',
+  'sinajiwai' => '',
+  'tencentjiwai' => '',
+  'googlemap' => '',
+);
+?>
