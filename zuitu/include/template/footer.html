@@ -47,7 +47,7 @@
 			</li>
 			<li class="col end">
 					<div class="logo-footer">
-						<a href="/"><img src="/static/css/i/logo-footer.gif" /></a>
+						<a href="/"><img src="/static/css/i/logo-footer.jpg" /></a>
 					</div>
 			</li>
 		</ul>
@@ -55,13 +55,36 @@
 		<p>&copy;<span>2010</span>&nbsp;{$INI['system']['sitename']}（0735bt.com）版权所有&nbsp;<a href="/about/terms.php">使用{$INI['system']['abbreviation']}前必读</a>&nbsp;<a href="http://www.miibeian.gov.cn/" target="_blank">{$INI['system']['icp']}</a>&nbsp;Powered by <a href="http://www.zuitu.com/" target="_blank">ZuiTu</a> software.<!--{if $INI['system']['statcode']}-->&nbsp;{$INI['system']['statcode']}<!--{/if}--></p>
 		</div>
 		<div class="attestation">
-			<a href="#"><img src="static/img/trust_r1_c1.gif" /></a>
-			<a href="#"><img src="static/img/trust_r1_c3.gif" /></a>
-			<a href="#"><img src="static/img/trust_r1_c11.jpg" height="40"/></a>
-			<a href="#"><img src="static/img/trust_r1_c9.gif" width="87" height="40"/></a>
-			<a href="#"><img src="static/img/trust_r1_c5.gif" /></a>
+			<a href="#"><img src="/static/img/trust_r1_c1.gif" /></a>
+			<a href="#"><img src="/static/img/trust_r1_c3.gif" /></a>
+			<a href="#"><img src="/static/img/trust_r1_c11.jpg" height="40"/></a>
+			<a href="#"><img src="/static/img/trust_r1_c9.gif" width="87" height="40"/></a>
+			<a href="#"><img src="/static/img/trust_r1_c5.gif" /></a>
 		</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+$('.goTop').click(function(e){
+e.stopPropagation();
+$('html, body').animate({scrollTop: 0},300);
+backTop();
+return false;
+});
+});
+</script>
+<div id="backtop" class="backTop"><a href="/#" class="goTop" title="返回顶部"></a></div>
+<script type="text/javascript">
+window.onscroll=backTop;
+function backTop(){
+var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+if(scrollTop==0){
+document.getElementById('backtop').style.display="none";
+}else{
+document.getElementById('backtop').style.display="block";
+}
+}
+backTop();
+</script>
 <!--{include html_footer}-->
