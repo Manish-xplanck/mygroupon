@@ -1,8 +1,8 @@
 <?php
 $value = array (
-  'wwwprefix' => 'http://localhost:800/zuituware',
-  'imgprefix' => 'http://localhost:800/zuituware',
-  'cssprefix' => 'http://localhost:800/zuituware',
+  'wwwprefix' => 'http://localhost:800/zuitu',
+  'imgprefix' => 'http://localhost:800/zuitu',
+  'cssprefix' => 'http://localhost:800/zuitu',
   'sitename' => '天天抱团网',
   'sitetitle' => '精品团购每一天',
   'abbreviation' => '天天抱团',
