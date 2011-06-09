@@ -846,10 +846,10 @@ dd#consult .deal-info .link h2 span{font-family:arial,sans-serif;}
 /*validator*/
 span.errorTip{ margin-left:4px; font-size:12px; color:#C00;}
 div.errorTip { font-size:12px; color:#C00; }
-div.validTip, span.validTip{ font-size:12px; display:none; } 
+div.validTip, span.validTip{ font-size:12px; display:none; }
 span.require { color:#C00; font-weight:bold; }
-.noerror .errorTip, .noerror .validTip { display: none; } 
-.errorInput{ background-color:#FFCC33; } 
+.noerror .errorTip, .noerror .validTip { display: none; }
+.errorInput{ background-color:#FFCC33; }
 
 /* vote */
 #user-vote .welcome{margin:0 10px 10px;}
@@ -905,7 +905,7 @@ div.expresstip { margin:0px 10px;background-color:#ECECEC;padding:5px; }
 #paybank p label{ float:left; height:25px; margin-top:15px; padding-left:150px; }
 #paybank p .cmb{ background:url(i/icon_zsyh_s.gif) no-repeat 10px 0px; }
 #paybank p .icbc{ background:url(i/icon_zggsyh_s.gif) no-repeat 10px 0px; }
-#paybank p .ccb{ background:url(i/icon_ccb_s.gif) no-repeat 10px 0px; } 
+#paybank p .ccb{ background:url(i/icon_ccb_s.gif) no-repeat 10px 0px; }
 #paybank p .abc{ background:url(i/icon_abc_s.gif) no-repeat 10px 0px; }
 #paybank p .spdb{ background:url(i/icon_spdb_s.gif) no-repeat 10px 0px; }
 #paybank p .bofc{ background:url(i/icon_bofc_s.gif) no-repeat 10px 0px; }
@@ -973,7 +973,7 @@ div.expresstip { margin:0px 10px;background-color:#ECECEC;padding:5px; }
 .partner-cont strong { font-size:16px; color:#CC3333; }
 .partner-li { border-bottom:1px dashed #ccc; margin-bottom:10px; }
 .partnar-num { background-position:0px 3px; display:block; float:left; color:#fff; font-size:12px; width:18px; height:20px; text-align:center; margin-right:5px; background-repeat:no-repeat; background-image:url("i/num-bg.png") }
-.partner-index-list { width:656px; } 
+.partner-index-list { width:656px; }
 /*商家详细页面*/
 .partner_team_info { height:240px; position:relative; margin-top:10px; padding:10px; background-color:#fffcd7; border:1px solid #fdbd7f; }
 .partner_team_info b{ color:#CC3333; }
@@ -1029,3 +1029,7 @@ div.expresstip { margin:0px 10px;background-color:#ECECEC;padding:5px; }
 #help .faq .paytype .yeepay{height:33px;background:url(i/yeepay.gif) no-repeat 0 2px;}
 #account-charge .typelist .yeepay{height:39px;background:url(i/yeepay.gif) no-repeat 20px 2px;}
 .mobile .mobile-tip { font-size:12px; color:#666666; border-top:1px solid #EFEFEF; line-height:1.6; margin:0 2px; padding:5px 10px; }
+
+
+.attestation{ width:960px;overflow:hidden;margin:10px auto; text-align: center; }
+.attestation a{margin:0 5px;}
