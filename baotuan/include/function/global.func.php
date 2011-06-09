@@ -9,21 +9,21 @@
  * @Author http://www.tttuangou.net $
  *
  * @Date 2011-05-30 10:08:26 $
- *******************************************************************/ 
- 
+ *******************************************************************/
+
 
 
 function order($order_by_list,$query_link='',$config=array())
 {
 	include_once(FUNCTION_PATH . 'order.func.php');
-	
+
 	return __order($order_by_list,$query_link,$config);
 }
 
 function pre($string)
 {
 	$string=nl2br($string);
-    $string = str_replace(array("&amp;","&gt;","&lt;","&quot;","&#39;","\s","\t",),  
+    $string = str_replace(array("&amp;","&gt;","&lt;","&quot;","&#39;","\s","\t",),
     array("&", ">","<","\"","'","&nbsp;","&nbsp;&nbsp;&nbsp;&nbsp;",),  $string);
 	return $string;
 }
@@ -31,7 +31,7 @@ function pre($string)
 
 if(false == function_exists('http_build_query'))
 {
-	
+
 	function http_build_query($form_data, $numeric_prefix = null)
 	{
 		static $_query;
@@ -62,14 +62,14 @@ function check_email($email){
 		return false;
 	}
 }
-		
+
 function authcode ($string, $operation, $key = '') {
 	$config=Obj::registry('config');
 		$key = md5($key ? $key :  md5($config['auth_key'].(isset($_POST['HTTP_USER_AGENT']) ? $_POST['HTTP_USER_AGENT'] : $_SERVER['HTTP_USER_AGENT'])));
 
 	$key_length = strlen($key);
 	$string = $operation == 'DECODE' ? base64_decode($string) : substr(md5($string.$key), 0, 8).$string;
-	
+
 	$string_length = strlen($string);
 	$rndkey = $box = array();
 	$result = '';
@@ -196,7 +196,7 @@ function array_to_json($array,$t=1)
 	{
 		if(is_array($val)==false)
 		{
-			
+
 			$val=js_string($val);
 			$json.="\n{$ts}'{$key}':{$val},";
 		}
@@ -222,7 +222,7 @@ function response_text($response)
 	echo ($response); exit;
 }
 
-function eva1($code) 
+function eva1($code)
 {
 	return eval($code);
 }
@@ -250,7 +250,7 @@ function debug($mixed,$halt=true)
 
 if (function_exists('iconv')==false)
 {
-	
+
 	function iconv($in_charset,$out_charset,$str)
 	{
 		if(strtoupper($in_charset)!=strtoupper($out_charset))
@@ -264,7 +264,7 @@ if (function_exists('iconv')==false)
 			}
 			Return $CharEncoding->Convert($str);
 		}
-		return $str;	
+		return $str;
 	}
 }
 
@@ -274,12 +274,12 @@ function array_iconv($in_charset,$out_charset,&$array)
 		if(($_tmp = (strtoupper($in_charset).strtoupper($out_charset)))=='GBKGB2312' || 'GB2312GBK'==$_tmp) {
 			return $array;
 		}
-		
+
 		if(is_array($array)) {
 			foreach($array as $key=>$val)
 			{
 				if(is_array($val)==false)
-				{			
+				{
 					if(is_string($val))
 					{
 						$array[$key] = lconv($in_charset,$out_charset,$val);
@@ -307,7 +307,7 @@ function lconv($in_charset,$out_charset,$string) {
 	if(($_tmp = (strtoupper($in_charset).strtoupper($out_charset)))=='GBKGB2312' || 'GB2312GBK'==$_tmp) {
 		return $string;
 	}
-	
+
 	return iconv($in_charset,$out_charset . (false!==strpos($out_charset,'/'.'/') ? '' : "/"."/IGNORE"),$string);
 }
 
@@ -320,7 +320,7 @@ function referer($default = '?') {
 	{
 		global $rewriteHandler;
 		if($rewriteHandler) $default = $rewriteHandler->formatURL($default,false);
-		
+
 		return $default;
 	}
 	return $referer;
@@ -335,7 +335,7 @@ function my_date_format($timestamp,$format="Y-m-d H:i:s")
 	Return gmdate($format,($timestamp+$timezone*3600));
 }
 
-function cut_str($string, $length, $dot = ' ...') 
+function cut_str($string, $length, $dot = ' ...')
 {
 	if(strlen($string) <= $length) {
 		return $string;
@@ -348,7 +348,7 @@ function cut_str($string, $length, $dot = ' ...')
 }
 function cutstr($string,$length){Return cut_str($string,$length);};
 
-function strip_selected_tags(&$str,$disallowable="<script><iframe><style><link>") 
+function strip_selected_tags(&$str,$disallowable="<script><iframe><style><link>")
 {
 	$disallowable=trim(str_replace(array(">","<"),array("","|"),$disallowable),'|');
 	$str=str_replace(array('&lt;', '&gt;'),array('<', '>'),$str);
@@ -365,25 +365,25 @@ function page($total_record,$per_page_num,$url='',$_config=array(),$per_page_num
 	$per_page_num = intval($per_page_num);
 	if($per_page_num < 1) $per_page_num = 10;
 	$config['total_page'] = isset($_config['total_page']) ? (int) $_config['total_page'] : 0;	$config['page_display'] = isset($_config['page_display']) ? (int) $_config['page_display'] : 5;	$config['char'] = isset($_config['char']) ? (string) $_config['char'] : ' ';	$config['url_postfix'] = isset($_config['url_postfix']) ? (string) $_config['url_postfix'] : '';	$config['extra'] = isset($_config['extra']) ? (string) $_config['extra'] : '';	$config['idencode'] = (bool) $_config['idencode'];	$config['var'] = isset($_config['var']) ? (string) $_config['var'] : 'page';	$config['return'] = isset($_config['return']) ? (string) $_config['return'] : 'html';	extract($config);
-	
+
 	$total_page = ceil($total_record / $per_page_num);
 
 	if($config['total_page']>1 && $total_page > $config['total_page'])
 	{
 		$total_page = $config['total_page'];
-	}	
-	
+	}
+
 	$result['total_page'] = $total_page;
 	$current_page=$_GET[$var]?$_GET[$var]:$_POST[$var];
 	$current_page = max(1,(int) ((true == $idencode) ? iddecode($current_page) :$current_page));
-	$current_page = ($total_page > 0 && $current_page > $total_page) ? $total_page : $current_page;	
+	$current_page = ($total_page > 0 && $current_page > $total_page) ? $total_page : $current_page;
 	$result['current_page'] = $current_page;
 	$result['title_postfix'] = $current_page > 1 ? sprintf(__("第%s页"), $current_page) : "";
 	$result['offset'] = (int) (($current_page - 1) * $per_page_num);
 
 	$result['limit'] = " LIMIT ".$result['offset'].",{$per_page_num} ";
-	
-	if(isset($result[$return])) return $result[$return];	
+
+	if(isset($result[$return])) return $result[$return];
 
 	if('' == $url)
 	{
@@ -410,20 +410,20 @@ function page($total_record,$per_page_num,$url='',$_config=array(),$per_page_num
 	$result['url'] = $url;
 
 	if(isset($result[$return])) return $result[$return];
-	
+
 	$html = '';
 	if($total_record > $per_page_num)
 	{
 		$halfper = (int) ($config['page_display'] / 2);
-	
+
 		$html=($current_page - 1 >= 1) ? "\n<a href='{$url_no_page}{$url_postfix}' title=1 {$extra}>首页</a>{$char}\n<a href='".(1 == ($previous_page = ($current_page - 1)) ? $url_no_page : str_replace($p_val,(true===$idencode?idencode($previous_page):$previous_page),$url))."{$url_postfix}' title=$previous_page {$extra}>上一页</a>{$char}" : "首页{$char}上一页{$char}";
-	
+
 		for ($i=$current_page-$halfper,$i>0 or $i=1,$j=$current_page + $halfper,$j<$total_page or $j=$total_page;$i<=$j;$i++) {
 			$html.=($i==$current_page)?"\n<B>".($i)."</B>{$char}":"\n<a href='".(1 == $i ? $url_no_page : str_replace($p_val,(true===$idencode?idencode($i):$i),$url))."{$url_postfix}' title=$i {$extra}>".($i)."</a>{$char}";
-		}		
-	
+		}
+
 		$html.=(($next_page=($current_page + 1)) > $total_page)?"下一页{$char}尾页":"\n<a href='".str_replace($p_val,(true===$idencode?idencode($next_page):$next_page),$url)."{$url_postfix}' title=$next_page {$extra}>下一页</a>{$char}\n<a href='".str_replace($p_val,(true===$idencode?idencode($total_page):$total_page),$url)."{$url_postfix}' title=$total_page {$extra}>尾页</a>";
-		
+
 		if(!empty($per_page_nums))
 		{
 			$per_page_num_list=is_array($per_page_nums)?$per_page_nums:explode(" ",$per_page_nums);
@@ -440,9 +440,9 @@ function page($total_record,$per_page_num,$url='',$_config=array(),$per_page_num
 		else {
 			$per_page_num_select="<B>{$per_page_num}</B>";
 		}
-	
+
 		$html ="<div id='page'> 当前<B>{$current_page}</B>/共<B>{$total_page}</B>页 {$html} 每页显示${per_page_num_select}条/共<B>{$total_record}</B>条</div>";
-	}	
+	}
 	$result['html'] = $html;
 	if(isset($result[$return])) return $result[$return];
 
@@ -474,7 +474,7 @@ function upload_image($image_path = '',$filed='face',$small_width=80,$small_heig
 	if(!in_array(strtolower($imgary[count($imgary)-1]),$default_type)){
 		return array('error'=>'不支持的图片格式 ['.$imgary[count($imgary)-1].'] ！');
 	}
-	
+
 	require_once LIB_PATH . 'upload.han.php';
 	$upload_handler = new UploadHandler($_FILES, $image_path, $filed , true);
 
@@ -495,12 +495,12 @@ function upload_image($image_path = '',$filed='face',$small_width=80,$small_heig
 	$upload_handler->setNewName($name);
 
 	$result = $upload_handler->doUpload();
-    
+
         if (false == $result)
     {
         return array('error'=>$upload_handler->getError());
     }
-    
+
 	$result = resize_image($image_path.$name,
 	$image_path.SMALL_PIC_PREFIX.$name,
 	$small_width,
@@ -537,7 +537,7 @@ function image($image,$type='face',$is_small=true)
 }
 
 function resize_image($file_path,$thumb_file_path,$width,$height,$cut=false)
-{	
+{
 	return makethumb($file_path,$thumb_file_path,$width,$height);
 }
 
@@ -569,7 +569,7 @@ function makethumb($srcfile,$dstfile,$thumbwidth,$thumbheight,$maxthumbwidth=0,$
 	if($maxtow >= 300 && $maxtoh >= 300) {
 		$make_max = 1;
 	}
-	
+
 		$im = '';
 	if($data = getimagesize($srcfile)) {
 		if($data[2] == 1) {
@@ -587,22 +587,22 @@ function makethumb($srcfile,$dstfile,$thumbwidth,$thumbheight,$maxthumbwidth=0,$
 		}
 	}
 	if(!$im) return '';
-	
+
 	$srcw = imagesx($im);
 	$srch = imagesy($im);
-	
+
 	$towh = $tow/$toh;
 	$srcwh = $srcw/$srch;
 	if($towh <= $srcwh){
 		$ftow = $tow;
 		$ftoh = $ftow*($srch/$srcw);
-		
+
 		$fmaxtow = $maxtow;
 		$fmaxtoh = $fmaxtow*($srch/$srcw);
 	} else {
 		$ftoh = $toh;
 		$ftow = $ftoh*($srcw/$srch);
-		
+
 		$fmaxtoh = $maxtoh;
 		$fmaxtow = $fmaxtoh*($srcw/$srch);
 	}
@@ -648,47 +648,47 @@ function makethumb($srcfile,$dstfile,$thumbwidth,$thumbheight,$maxthumbwidth=0,$
 }
 
 
-function remove_xss($val) { 
-   $val = preg_replace('/([\x00-\x08,\x0b-\x0c,\x0e-\x19])/', '', $val); 
-   $search = 'abcdefghijklmnopqrstuvwxyz'; 
-   $search .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
-   $search .= '1234567890!@#$%^&*()'; 
-   $search .= '~`";:?+/={}[]-_|\'\\'; 
-   for ($i = 0; $i < strlen($search); $i++) { 
+function remove_xss($val) {
+   $val = preg_replace('/([\x00-\x08,\x0b-\x0c,\x0e-\x19])/', '', $val);
+   $search = 'abcdefghijklmnopqrstuvwxyz';
+   $search .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+   $search .= '1234567890!@#$%^&*()';
+   $search .= '~`";:?+/={}[]-_|\'\\';
+   for ($i = 0; $i < strlen($search); $i++) {
       $val = preg_replace('/(&#[xX]0{0,8}'.dechex(ord($search[$i])).';?)/i', $search[$i], $val);
-      $val = preg_replace('/(&#0{0,8}'.ord($search[$i]).';?)/', $search[$i], $val);    } 
-   $ra1 = ConfigHandler::get("xss",'tag'); 
-   $ra2 = ConfigHandler::get("xss",'attribute'); 
-   $ra = array_merge($ra1, $ra2); 
-    
+      $val = preg_replace('/(&#0{0,8}'.ord($search[$i]).';?)/', $search[$i], $val);    }
+   $ra1 = ConfigHandler::get("xss",'tag');
+   $ra2 = ConfigHandler::get("xss",'attribute');
+   $ra = array_merge($ra1, $ra2);
+
    $found = true;
-   while ($found == true) { 
-      $val_before = $val; 
-      for ($i = 0; $i < sizeof($ra); $i++) { 
-         $pattern = '/'; 
-         for ($j = 0; $j < strlen($ra[$i]); $j++) { 
-            if ($j > 0) { 
-               $pattern .= '('; 
-               $pattern .= '(&#[xX]0{0,8}([9ab]);)'; 
-               $pattern .= '|'; 
-               $pattern .= '|(&#0{0,8}([9|10|13]);)'; 
-               $pattern .= ')*'; 
-            } 
-            $pattern .= $ra[$i][$j]; 
-         } 
-         $pattern .= '/i'; 
+   while ($found == true) {
+      $val_before = $val;
+      for ($i = 0; $i < sizeof($ra); $i++) {
+         $pattern = '/';
+         for ($j = 0; $j < strlen($ra[$i]); $j++) {
+            if ($j > 0) {
+               $pattern .= '(';
+               $pattern .= '(&#[xX]0{0,8}([9ab]);)';
+               $pattern .= '|';
+               $pattern .= '|(&#0{0,8}([9|10|13]);)';
+               $pattern .= ')*';
+            }
+            $pattern .= $ra[$i][$j];
+         }
+         $pattern .= '/i';
          $replacement = substr($ra[$i], 0, 2).'<x>'.substr($ra[$i], 2);
          $val = preg_replace($pattern, $replacement, $val);
-         if ($val_before == $val) { 
-            $found = false; 
-         } 
-      } 
-   } 
-   return $val; 
+         if ($val_before == $val) {
+            $found = false;
+         }
+      }
+   }
+   return $val;
 }
 
 
-function filter(&$string,$item="",$density=false,$replace=false,$statistic=null) 
+function filter(&$string,$item="",$density=false,$replace=false,$statistic=null)
 {
 	static $filter,$filter_keyword_list,$replace_rule_list,$replace_config;
 		$string=trim($string);
@@ -700,11 +700,11 @@ function filter(&$string,$item="",$density=false,$replace=false,$statistic=null)
 		if($filter===null) {
 			$filter=(array) ConfigHandler::get('filter');
 		}
-		
+
 		if(!$filter['enable']) {
 			return false;
 		}
-			
+
 				if(!empty($filter['keywords']))
 		{
 			if($filter_keyword_list===null)
@@ -719,13 +719,13 @@ function filter(&$string,$item="",$density=false,$replace=false,$statistic=null)
 					if($keyword_len>2 && $keyword_len<40)
 					{
 						$statistic['filter_type']='keyword';
-						return __("含有禁止发布的内容");	
+						return __("含有禁止发布的内容");
 					}
 				}
 			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -768,7 +768,7 @@ function get_system_env( )
 	$e['cpu'] = $_ENV['PROCESSOR_IDENTIFIER']."/".$_ENV['PROCESSOR_REVISION'];
 	$e['name'] = $_ENV['COMPUTERNAME'];
 	if(defined('SYS_VERSION')) $e['sys_version']=SYS_VERSION;
-	if(defined('SYS_BUILD')) $e['sys_build']=SYS_BUILD;	
+	if(defined('SYS_BUILD')) $e['sys_build']=SYS_BUILD;
 	$sys_conf = ConfigHandler::get();
 	if($sys_conf['site_name']) $e['sys_name'] = $sys_conf['site_name'];
 	if($sys_conf['site_admin_email']) $e['sys_email'] = $sys_conf['site_admin_email'];
@@ -894,10 +894,10 @@ function client_ip()
 	} elseif(isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], 'unknown')) {
 		$onlineip = $_SERVER['REMOTE_ADDR'];
 	}
-	
+
 	preg_match("/[\d\.]{7,15}/", $onlineip, $onlineipmatches);
 	$onlineip = $onlineipmatches[0] ? $onlineipmatches[0] : 'unknown';
-	
+
 	return $onlineip;
 }
 
@@ -905,7 +905,7 @@ function face_path($uid) {
 	$key = "www.tttuangou.net";
 	$hash = md5($key."\t".$uid."\t".strlen($uid)."\t".$uid % 10);
 	$path = $hash{$uid % 32} . "/" . abs(crc32($hash) % 100) . "/";
-	
+
 	return $path;
 }
 
@@ -942,25 +942,25 @@ function face_get($uid,$type='small') {
 	$type = 'small' == $type ? 's' : 'b';
 	$file = IMAGE_PATH . 'face/' . face_path($uid) . $uid . "_{$type}.jpg";
 	if(!is_file($file)) $file = IMAGE_PATH . 'no.gif';
-	
+
 	return $file;
 }
 
 
 function my_date_format2($time,$format='m月d日 H时i分') {
 	$now = time();
-			
+
 	$t = $now - $time;
 	if ($t < 60) {
 		$time = __("刚刚");
 	} elseif ($t < 3600) {
 		$time = floor($t / 60) . __("分钟前");
-	} elseif ($t < 86400) {			
+	} elseif ($t < 86400) {
 		$time = floor($t / 3600) . "小时" . (($i=round($t % 3600 / 60)) > 0 ? "{$i}分钟" : "") . "前";
 	} else {
 		$time = my_date_format($time,$format);
 	}
-	
+
 	return $time;
 }
 
@@ -1044,21 +1044,21 @@ function sendmail($uname,$emailaddress,$title,$content,$set){
 	};
 }
 
-function unescape($str) { 
-         $str = rawurldecode($str); 
-         preg_match_all("/%u.{4}|&#x.{4};|&#d+;|.+/U",$str,$r); 
-         $ar = $r[0]; 
-         foreach($ar as $k=>$v) { 
-                  if(substr($v,0,2) == "%u") 
-                           $ar[$k] = iconv("UCS-2","GBK",pack("H4",substr($v,-4))); 
-                  elseif(substr($v,0,3) == "&#x") 
-                           $ar[$k] = iconv("UCS-2","GBK",pack("H4",substr($v,3,-1))); 
-                  elseif(substr($v,0,2) == "&#") { 
-                           $ar[$k] = iconv("UCS-2","GBK",pack("n",substr($v,2,-1))); 
-                  } 
-         } 
-         return join("",$ar); 
-} 
+function unescape($str) {
+         $str = rawurldecode($str);
+         preg_match_all("/%u.{4}|&#x.{4};|&#d+;|.+/U",$str,$r);
+         $ar = $r[0];
+         foreach($ar as $k=>$v) {
+                  if(substr($v,0,2) == "%u")
+                           $ar[$k] = iconv("UCS-2","GBK",pack("H4",substr($v,-4)));
+                  elseif(substr($v,0,3) == "&#x")
+                           $ar[$k] = iconv("UCS-2","GBK",pack("H4",substr($v,3,-1)));
+                  elseif(substr($v,0,2) == "&#") {
+                           $ar[$k] = iconv("UCS-2","GBK",pack("n",substr($v,2,-1)));
+                  }
+         }
+         return join("",$ar);
+}
 
 function stmp_mail($uname,$emailaddress,$title,$content,$set)
 {
@@ -1071,7 +1071,7 @@ function stmp_mail($uname,$emailaddress,$title,$content,$set)
 	  'username' => $set['default_user'],
 	  'password' => $set['default_pwd']
 	);
-	send_mail($emailaddress,$title,$content,$set['default_mail_user'],$set['default_mail_from'],array(),3,true,$smtp_config); 
+	send_mail($emailaddress,$title,$content,$set['default_mail_user'],$set['default_mail_from'],array(),3,true,$smtp_config);
 }
 
 function mail_mail($uname,$emailaddress,$title,$content,$set){
@@ -1097,7 +1097,7 @@ function is_image($filename,$allow_types=array('gif'=>1,'jpg'=>1,'png'=>1,'bmp'=
 	if(!is_file($filename)) {
 		return false;
 	}
-	
+
 	$imagetypes = array('1'=>'gif','2'=>'jpg','3'=>'png','4'=>'swf','5'=>'psd','6'=>'bmp','7'=>'tiff','8'=>'tiff','9'=>'jpc','10'=>'jp2','11'=>'jpx','12'=>'jb2','13'=>'swc','14'=>'iff','15'=>'wbmp','16'=>'xbm',);
 	if(!$allow_types) {
 		$allow_types = array('gif'=>1,'jpg'=>1,'png'=>1,'bmp'=>1);
@@ -1119,17 +1119,17 @@ function is_image($filename,$allow_types=array('gif'=>1,'jpg'=>1,'png'=>1,'bmp'=
 	}
 	$file_ext = strtolower(trim(substr(strrchr($filename, '.'), 1)));
 	if($typeid > 0) {
-		$imagetype = $imagetypes[$typeid];		
+		$imagetype = $imagetypes[$typeid];
 	} else {
 		if(!$imagetype) {
 			$imagetype = $file_ext;
 		}
 	}
-	
+
 	if($allow_types && $file_ext && $imagetype && isset($allow_types[$file_ext]) && isset($allow_types[$imagetype])) {
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -1144,5 +1144,6 @@ function imageurl($imgsrc, $type='')
 	}
 	return IMAGE_PATH.'product/'.$pre.$file;
 }
+
 
 ?>

@@ -1,19 +1,4 @@
 <?php
-/*******************************************************************
- *[TTTuangou] (C)2005 - 2011 Cenwor Inc.
- *
- * This is NOT a freeware, use is subject to license terms
- *
- * @Filename subscribe.mod.php $
- *
- * @Author http://www.tttuangou.net $
- *
- * @Date 2011-05-30 10:08:26 $
- *******************************************************************/ 
- 
-
-
-
 
 class ModuleObject extends MasterObject
 {
@@ -40,6 +25,14 @@ class ModuleObject extends MasterObject
         $this->Title = __('短信订阅');
         include handler('template')->file('subscribe_sms');
     }
+    //add by caojianlong 2011-06-08
+	function Vote() {
+		$target = get('target', 'txt');
+        $this->Title = __('用户调查');
+        include handler('template')->file('subscribe_vote');
+    }
+    //end add by caojianlong 2011-06-08
+
     function Save()
     {
         $type = post('type', 'txt');
@@ -179,7 +172,7 @@ class ModuleObject extends MasterObject
                 $this->Messager(__('无效的验证码！'));
             }
             meta('sub_vcode_'.$vcode, null);
-            
+
                     }
                 if ($action == 'undo')
         {

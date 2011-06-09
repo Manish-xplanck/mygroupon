@@ -1,23 +1,8 @@
 <?php
-/*******************************************************************
- *[TTTuangou] (C)2005 - 2011 Cenwor Inc.
- *
- * This is NOT a freeware, use is subject to license terms
- *
- * @Filename subscribe.logic.php $
- *
- * @Author http://www.tttuangou.net $
- *
- * @Date 2011-05-30 10:08:26 $
- *******************************************************************/ 
- 
-
-
-
 
 class SubscribeLogic
 {
-    
+
     public function TypeList()
     {
         return array(
@@ -25,12 +10,12 @@ class SubscribeLogic
         	'sms' => '¶ÌÐÅ'
         );
     }
-    
+
     public function GetOne($id)
     {
         return dbc(DBCMax)->select('subscribe')->where(array('id'=>$id))->limit(1)->done();
     }
-    
+
     function GetList($type = null, $city = null)
     {
         $sql_limit_type = '1';
@@ -47,7 +32,7 @@ class SubscribeLogic
         $sql = page_moyo($sql);
         return ($query = dbc()->Query($sql)) ? $query->GetAll() : array();
     }
-    
+
     public function Add($city, $type, $target, $validated = 'false')
     {
         $data = array(
@@ -65,26 +50,26 @@ class SubscribeLogic
         }
         return $iid;
     }
-    
+
     function Del($id)
     {
         dbc()->SetTable(table('subscribe'));
         dbc()->Delete('', 'id='.$id);
     }
-    
+
     public function Validate($id, $validated = 'true')
     {
         if (!$id || !is_numeric($id)) return;
         return dbc(DBCMax)->update('subscribe')->data(array('validated'=>$validated))->where(array('id'=>$id))->done();
     }
-    
+
     public function Subsd($target)
     {
         $result = $this->Search('target', $target, true);
         if ($result['validated'] == 'false') return false;
         return $result ? $result['id'] : false;
     }
-    
+
     public function Search($field, $value, $getOne = true)
     {
         $dbc = dbc(DBCMax)->select('subscribe')->where(array($field=>$value));
@@ -94,7 +79,7 @@ class SubscribeLogic
         }
         return $dbc->done();
     }
-    
+
     function Push($class, $city, $data)
     {
         $runCode = 'Push_'.$class;

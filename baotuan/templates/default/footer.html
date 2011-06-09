@@ -4,67 +4,61 @@
 $(document).ready(function() {
 $("#top_title").click(function() {
 $("#show_provinces").toggle();
-}).css({ "cursor":"pointer" , "text-decoration":"underline" });	
+}).css({ "cursor":"pointer" , "text-decoration":"underline" });
 var last_show = null;
 $(".sub_title").mouseover(function() {
 if(last_show != null) {
 last_show.prev().css({ "color":"#FF6600" , "font-weight":"normal" });
-last_show.hide();				
+last_show.hide();
 }
 last_show = $(this).css({ "color":"#FF6600" }).next();
-last_show.show();	
-}).css({ "cursor":"pointer" , "text-decoration":"underline" });	
-$("li a").click(function() {			
+last_show.show();
+}).css({ "cursor":"pointer" , "text-decoration":"underline" });
+$("li a").click(function() {
 $(".show_citys").hide();
 $("#show_provinces").hide();
 });
 $("#close").click(function() {
 $(".show_citys").css({ "color":"#FF6600" }).hide();
 $("#show_provinces").css({ "color":"#FF6600" }).hide();
-}).mouseover(function() { 
+}).mouseover(function() {
 $(this).css({ "color":"#FF6600" });
 }).mouseout(function() {
-$(this).css({ "color":"#FF6600" });	
+$(this).css({ "color":"#FF6600" });
 }).css({ "cursor":"pointer" });
 });
 </script>
 <div id="ft">
 <ul class="cf">
 <li class="col">
-<h3>友情链接</h3>
+<h3>用户帮助</h3>
 <ul class="sub-list">
-<!--{if ini('link')}-->
-<!--{loop ini('link') $i $value}-->
-<li>
-<a href="{$value[url]}" title="{$value[name]}" target="_blank">{$value[name]}{if $value[logo]}<img src="{$value[logo]}" />{/if}</a>
-</li>
-<!--{/loop}-->
-<!--{/if}-->
+<li><a href="?mod=list&code=guide">玩转天天抱团</a></li>
+<li><a href="?mod=list&code=faq">常见问题</a></li>
+<li><a href="?mod=list&code=ask">在线问答</a></li>
+<li><a href="?mod=openapi">开放 API</a></li>
 </ul>
 </li>
 <li class="col">
-<h3>如何团购</h3>
+<h3>获取更新</h3>
 <ul class="sub-list">
-<li><a href="?mod=list&code=help">团购指南</a></li>
-<li><a href="?mod=list&code=faq">常见问题</a></li>
 <li><a href="?mod=subscribe&code=mail">邮件订阅</a></li>
 <li><a href="?mod=subscribe&code=sms">短信订阅</a></li>
 </ul>
 </li>
 <li class="col">
-<h3>联系我们</h3>
+<h3>合作联系</h3>
 <ul class="sub-list">
 <li><a href="?mod=list&code=contact">联系我们</a></li>
-<li><a href="?mod=list&code=ask">在线问答</a></li>
 <li><a href="?mod=list&code=feedback">意见反馈</a></li>
 <li><a href="?mod=list&code=business">商务合作</a></li>
-<li><a href="?mod=openapi">开放 API</a></li>
+<li><a href="?mod=list&code=link">友情链接</a></li>
 </ul>
 </li>
 <li class="col">
 <h3>公司信息</h3>
 <ul class="sub-list">
-<li><a href="?mod=list&code=about">关于我们</a></li>
+<li><a href="?mod=list&code=about">关于天天抱团</a></li>
 <li><a href="?mod=list&code=privacy">隐私保护</a></li>
 <li><a href="?mod=list&code=join">加入我们</a></li>
 <li><a href="?mod=list&code=terms">用户协议</a></li>

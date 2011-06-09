@@ -9,48 +9,48 @@
  * @Author http://www.tttuangou.net $
  *
  * @Date 2011-05-30 10:08:26 $
- *******************************************************************/ 
- 
+ *******************************************************************/
+
 
 class MasterObject
 {
-	
+
 	var $Config=array();
 	var $Get,$Post,$Files,$Request,$Cookie,$Session;
 
-	
+
 	var $DatabaseHandler;
-	
+
 	var $MemberHandler;
 
-	
+
 	var $TemplateHandler;
 
 
-	
+
 	var $CookieHandler;
 
-	
+
 	var $Title='';
-	
+
 	var $MetaKeywords='';
-	
+
 	var $MetaDescription='';
 
-	
+
 	var $Position='';
-	
-	
+
+
 	var $Module='index';
-	
-	
+
+
 	var $Lang=array();
 
-	
+
 	var $Code='index';
-	
+
 	var $FILE='index';
-	
+
 	var $OPC = '';
 
 	function MasterObject(&$config)
@@ -58,7 +58,7 @@ class MasterObject
 		$config['v'] = SYS_VERSION;
 		$config['vb'] = SYS_BUILD;
 				$this->Config=$config;		Obj::register('config', $this->Config);
-		
+
 				$this->Get     = &$_GET;
 		$this->Post    = &$_POST;
 		$this->Cookie  = &$_COOKIE;
@@ -69,12 +69,12 @@ class MasterObject
 		$this->Module = trim($this->Post['mod']?$this->Post['mod']:$this->Get['mod']);
 		$this->Code   = trim($this->Post['code']?$this->Post['code']:$this->Get['code']);
 		$this->OPC   = trim($this->Post['op']?$this->Post['op']:$this->Get['op']);
-		
+
         if ($this->Code == '')
 		{
 		    $this->Code = ini('settings.default_code');
 		}
-		
+
 				global $rewriteHandler;
 		$__navs = ConfigHandler::get('nav');
 		foreach ($__navs as $i => $nav)
@@ -95,25 +95,25 @@ class MasterObject
 	    	}
 		}
     	$this->Config['__navs'] = $__navs;
-    	
+
     	    	$__set = ConfigHandler::get('product');
     	$__defualt_css = $__set['default_style'];
     	$this->Config['__default_css'] = $__defualt_css;
 
 		$GLOBALS['iframe'] = '';
-		
+
 				require_once LIB_PATH . 'cookie.han.php';
 		$this->CookieHandler = handler('cookie');
 		Obj::register('CookieHandler',$this->CookieHandler);
 
 				$this->TemplateHandler = handler('template');
 		Obj::register('TemplateHandler',$this->TemplateHandler);
-		
-		
-		
+
+
+
 		$this->DatabaseHandler = dbc();
 		Obj::register('DatabaseHandler',$this->DatabaseHandler);
-		
+
 				require_once LIB_PATH . 'member.han.php';
 		$uid = 0;$password = '';$secques = '';
 		if($authcode=$this->CookieHandler->GetVar('auth'))
@@ -126,9 +126,9 @@ class MasterObject
 		{
 			$this->Messager($this->MemberHandler->GetError(),null);
 		}
-		
+
 		$this->Title=$this->MemberHandler->CurrentAction['name'];		Obj::register("MemberHandler",$this->MemberHandler);
-		
+
 				$ipbanned=ConfigHandler::get('access','ipbanned');
 		if(!empty($ipbanned) && preg_match("~^({$ipbanned})~",$_SERVER['REMOTE_ADDR'])) {
 			$this->Messager("您的IP已经被禁止访问。",null);
@@ -143,33 +143,33 @@ class MasterObject
 			{
 								if ($this->Config['robot']['list'][ROBOT_NAME]['disallow']) {
 					exit('Access Denied');
-				}			
-				
+				}
+
 				$RobotLogic->statistic();
-								if(isset($this->Config['robot']['list'][ROBOT_NAME]['show_ad']) 
+								if(isset($this->Config['robot']['list'][ROBOT_NAME]['show_ad'])
 				&& (int)$this->Config['robot']['list'][ROBOT_NAME]['show_ad']==0)
 				{
 					unset($this->Config['ad']);
 				}
 				include_once LOGIC_PATH.'robot_log.logic.php';
 				$RobotLogLogic=new RobotLogLogic(ROBOT_NAME);
-				$RobotLogLogic->statistic();				
+				$RobotLogLogic->statistic();
 				unset($RobotLogLogic);
-			}			
+			}
 			unset($RobotLogic);
 		}
 		unset($this->Config['robot']);
-		
+
 				define("FORMHASH",substr(md5(substr(time(), 0, -7).$_SERVER['HTTP_HOST'].$this->Config['auth_key'].$_SERVER['HTTP_USER_AGENT']),0,16));
 		if($_SERVER['REQUEST_METHOD']=="POST" && $this->Module!='callback' && $this->Module!='misc' && $this->Module!='upload' && $this->Module!='address')
 		{
-			if($this->Post["FORMHASH"]!=FORMHASH || strpos($_SERVER["HTTP_REFERER"],$_SERVER["HTTP_HOST"])===false) { 
+			if($this->Post["FORMHASH"]!=FORMHASH || strpos($_SERVER["HTTP_REFERER"],$_SERVER["HTTP_HOST"])===false) {
 				$this->Messager("请求无效",null);
 			}
 		}
 
 	}
-	
+
 	function Get($key='', $limit='')
 	{
 	    return logic('safe')->Vars('GET', $key, $limit);
@@ -178,7 +178,7 @@ class MasterObject
 	{
 	    return logic('safe')->Vars('POST', $key, $limit);
 	}
-	
+
 	function ShowBody($body)
 	{
 		echo $body;
@@ -191,15 +191,15 @@ class MasterObject
 		$v = '<fo'.'nt ti'.'tle="'.$this->Config['vb'].'">'.$this->Config['v'].'</font>';
 		echo((ENC_IS_GBK ? ENC_U2G(~$a) : ~$a).$v.~$b.date('Y').~$c);
 	}
-	
+
 	function _test()
 	{
 		;
-		
+
 		exit;
 	}
 
-	
+
 	function Messager($message, $redirectto='',$time = -1,$return_msg=false,$js=null)
 	{
 		global $rewriteHandler;
@@ -213,7 +213,7 @@ class MasterObject
 		else
 		{
 			$redirectto=($redirectto!=='')?$redirectto:($from_referer=referer());
-			
+
 			if (is_numeric($redirectto)!==false and $redirectto!==0)
 			{
 				if($time!==null){
@@ -227,7 +227,7 @@ class MasterObject
 			{
 				if($rewriteHandler)
 				{
-					
+
 					$redirectto = rewrite($redirectto);
 				}
 				else
@@ -255,7 +255,7 @@ class MasterObject
 			$js="<script language=\"JavaScript\" type=\"text/javascript\">{$js}</script>";
 		}
 		$additional_str = $url_redirect.$js;
-		
+
 		include_once $this->TemplateHandler->Template('messager');
 		exit;
 	}
