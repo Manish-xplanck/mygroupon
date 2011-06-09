@@ -19,13 +19,14 @@ var thisSiteURL = '{ini:settings.site_url}/';
 <a name="htop" id="htop"></a>
 <div class="header" style=" position:relative; z-index:9999;">
 <div class="h960">
-<div class="at_logo"> 
+<div class="at_logo">
 <div class="vcoupon">
+<a href="?mod=list&code=invite">&raquo; 邀请好友</a>
 <a href="?mod=list&code=ckticket">&raquo; 团购券验证及消费登记</a>
 </div>
 <div class="logo"><a href="./"><img src="templates/default/images/placeholder.gif" /></a></div>
 <a class="at_city" href="javascript:void(0)">{~logic('misc')->City('name')}</a>
-<div id="change_city" > <span id="top_title">切换城市</span>
+<div id="change_city" >&nbsp;<span id="top_title" style="display:none;">切换城市</span>
 <div id="show_provinces" >
 <div class="city_close" id="close">[关闭]</div>
 <div style="margin-bottom:0.75em; font-weight:bolder;" class="city_chose"><span>请选择您所在的城市:</span></div>
@@ -39,7 +40,7 @@ var thisSiteURL = '{ini:settings.site_url}/';
 <div id="Tpl_c">
 <a class="ft_top" href="?mod=subscribe&code=mail">邮件订阅</a>
 <a class="ft_top sms" href="?mod=subscribe&code=sms">短信订阅</a>
-<span id="page_options" onclick="ShowHideDiv()">更换界面<div id="Sright"><script type="text/javascript">writeCSSLinks();</script></div></span> 
+<span id="page_options" onclick="ShowHideDiv()" style="display: none;">更换界面<div id="Sright"><script type="text/javascript">writeCSSLinks();</script></div></span>
 </div>
 <script type="text/javascript">
 var __default_css = '{conf __default_css}';
@@ -62,8 +63,8 @@ $(".menu_tq").mouseout(function(){$(".menu_tqb").hide();$(".menu_tq").removeClas
 <div class="sign">
 <!--{if MEMBER_ID > 0}-->
 <div class="menu"><em>欢迎您，{MEMBER_NAME}！<a href="?mod=account&code=logout">退出</a></em></div>
-{if MEMBER_ROLE_ID==2}<div class="menu"><a href="admin.php">管理后台</a></div>{/if} 
-{if MEMBER_ROLE_ID==6}<div class="menu"><a href="?mod=magseller">商家管理</a></div>{/if} 
+{if MEMBER_ROLE_ID==2}<div class="menu"><a href="admin.php">管理后台</a></div>{/if}
+{if MEMBER_ROLE_ID==6}<div class="menu"><a href="?mod=magseller">商家管理</a></div>{/if}
 <div class="menu"> <div class="menu_tq">我的团购<div class="menu_tqb"><a href="?mod=me&code=coupon" class="sh_t">我的团购券</a><a href="?mod=me&code=order">我的订单</a><a href="?mod=me&code=bill">消费详单</a><a href="?mod=me&code=setting">账户设置</a><a href="?mod=me&code=address">配送地址</a></div></div></div>
 <!--{else}-->
 <div class="menu">

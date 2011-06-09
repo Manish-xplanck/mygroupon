@@ -9,8 +9,8 @@
  * @Author http://www.tttuangou.net $
  *
  * @Date 2011-05-30 10:08:26 $
- *******************************************************************/ 
- 
+ *******************************************************************/
+
 
 
 class ModuleObject extends MasterObject
@@ -56,8 +56,8 @@ class ModuleObject extends MasterObject
         if ( MEMBER_ID < 1 ) $this->Messager(__('您必须先登录才能发表您的提问！'));
         if ( $question == '' ) $this->Messager(__('问题不可以为空哦！'));
         if ( $a = filter($question) ) $this->Messager($a);
-        $ary = array( 
-            userid => MEMBER_ID, username => MEMBER_NAME, content => $question, time => time() 
+        $ary = array(
+            userid => MEMBER_ID, username => MEMBER_NAME, content => $question, time => time()
         );
         $this->DatabaseHandler->SetTable(TABLE_PREFIX . 'tttuangou_question');
         $result = $this->DatabaseHandler->Insert($ary);
@@ -71,9 +71,20 @@ class ModuleObject extends MasterObject
         $this->Title = __('团购指南');
         include ($this->TemplateHandler->Template("help"));
     }
+    // add by caojianlong 2011-06-08
+    function Link() {
+		$this->Title = __('友情链接');
+		include ($this->TemplateHandler->Template("link"));
+    }
+	function Guide() {
+        $this->Title = __('玩转天天抱团网');
+        include ($this->TemplateHandler->Template("guide"));
+    }
+	//end add by caojianlong
+
     function About()
     {
-        $this->Title = __('关于我们');
+        $this->Title = __('关于天天抱团');
         include ($this->TemplateHandler->Template('about'));
     }
     function Privacy()
@@ -88,7 +99,7 @@ class ModuleObject extends MasterObject
     }
     function Join()
     {
-        $this->Title = __('加入我们');
+        $this->Title = __('加入天天抱团');
         include ($this->TemplateHandler->Template('join'));
     }
     function Terms()
@@ -105,8 +116,8 @@ class ModuleObject extends MasterObject
     {
         if ( $this->Post['name'] == '' || $this->Post['phone'] == '' || $this->Post['content'] == '' ) $this->Messager("缺少必要参数，请正确填写！");
         if ( $a = filter($this->Post['content']) ) $this->Messager($a);
-        $ary = array( 
-            'name' => $this->Post['name'], 'phone' => $this->Post['phone'], 'elsecontat' => $this->Post['elsecontat'], 'content' => $this->Post['content'], 'time' => time(), 'type' => 2, 'readed' => 0 
+        $ary = array(
+            'name' => $this->Post['name'], 'phone' => $this->Post['phone'], 'elsecontat' => $this->Post['elsecontat'], 'content' => $this->Post['content'], 'time' => time(), 'type' => 2, 'readed' => 0
         );
         $this->MeLogic->UserMsg($ary);
         $this->Messager(__("我们已经记录下您的合作信息，我们将尽快给您回复！"), "?mod=list&code=business");
@@ -120,8 +131,8 @@ class ModuleObject extends MasterObject
     {
         if ( $this->Post['name'] == '' || $this->Post['phone'] == '' || $this->Post['content'] == '' ) $this->Messager("缺少必要参数，请正确填写！");
         if ( false != $a = filter($this->Post['content']) ) $this->Messager($a);
-        $ary = array( 
-            'name' => $this->Post['name'], 'phone' => $this->Post['phone'], 'elsecontat' => $this->Post['elsecontat'], 'content' => $this->Post['content'], 'time' => time(), 'type' => 1, 'readed' => 0 
+        $ary = array(
+            'name' => $this->Post['name'], 'phone' => $this->Post['phone'], 'elsecontat' => $this->Post['elsecontat'], 'content' => $this->Post['content'], 'time' => time(), 'type' => 1, 'readed' => 0
         );
         $this->MeLogic->UserMsg($ary);
         $this->Messager(__("我们已经记录下您的反馈信息，感谢您对本站的支持！"), "?mod=list&code=feedback");
@@ -178,7 +189,7 @@ class ModuleObject extends MasterObject
         $finder = $this->MeLogic->finderList(user()->get('id'));
         include ($this->TemplateHandler->Template("invite"));
     }
-    
+
     function Ckticket()
     {
         $this->Title = __('消费卷查询');
@@ -259,8 +270,8 @@ class ModuleObject extends MasterObject
             if ( $product['userid'] != MEMBER_ID ) exit('<font color="red">此消费券不属于您的产品！</font>');
             if ( $password == $ticket['password'] )
             {
-                $ary = array( 
-                    'status' => TICK_STA_Used, 'usetime' => date('Y-m-d H:i:s', time()) 
+                $ary = array(
+                    'status' => TICK_STA_Used, 'usetime' => date('Y-m-d H:i:s', time())
                 );
                 $this->DatabaseHandler->SetTable(TABLE_PREFIX . 'tttuangou_ticket');
                 $result = $this->DatabaseHandler->Update($ary, 'ticketid=' . $ticket['ticketid']);

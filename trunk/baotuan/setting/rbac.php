@@ -103,6 +103,21 @@ $config["rbac"] =  array (
           'name' => '',
           'enabled' => false,
         ),
+        'link' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'guide' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'vote' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
       ),
       'misc' => 
       array (
@@ -355,6 +370,11 @@ $config["rbac"] =  array (
           'name' => '',
           'enabled' => false,
         ),
+        'vote' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
       ),
       'apiz' => 
       array (
@@ -564,6 +584,26 @@ $config["rbac"] =  array (
           'enabled' => false,
         ),
         'dataapi' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'city' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'doeditcity' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'defaultstyle' => 
+        array (
+          'name' => '',
+          'enabled' => false,
+        ),
+        'dodefaultstyle_set' => 
         array (
           'name' => '',
           'enabled' => false,
