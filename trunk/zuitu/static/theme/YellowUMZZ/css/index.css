@@ -98,8 +98,8 @@ body.newbie{background-position:50% 326px;}
 #hd .logins .links a:hover,#hd .logins a.hover{background:#FF4E00;color:#F7B262;text-decoration:none;font-weight:bold;}
 #nav{position:relative;}
 #nav ul{font-size:16px;font-weight:bold;}
-#logo{padding-top:23px;padding-left:37px;}
-#hd .guides{position:absolute;left:354px;top:54px;z-index:2;}
+#logo{padding-top:10px;padding-left:10px;}
+#hd .guides{position:absolute;left:294px;top:47px;z-index:2;}
 #hd .city{float:left;width:73px;height:25px;line-height:25px;background:url(i/bg-guides-city.gif) no-repeat 0 0;}
 #hd .city h2{text-align:center;color:#fff;}
 #hd .change{float:left;width:80px;padding:3px 8px;*padding-top:5px;_padding-top:3px;color:#fff;font-size:12px;cursor:pointer;}
@@ -1033,3 +1033,10 @@ div.expresstip { margin:0px 10px;background-color:#ECECEC;padding:5px; }
 
 .attestation{ width:960px;overflow:hidden;margin:10px auto; text-align: center; }
 .attestation a{margin:0 5px;}
+
+/*底部*/
+/** html,* html body{background-attachment:fixed;}*/
+.backTop{position:fixed;_position:absolute;width:28px;height:70px;bottom:20px;right:0;visibility:visible;}
+* html .backTop /* IE6 底部固定  */{position:absolute;bottom:auto;top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));}
+a.goTop{width:28px;height:70px;display:block;background:url(i/up.png) 0 0 no-repeat;}
+/*a.goTop:hover{background-position:-30px 0;}*/
