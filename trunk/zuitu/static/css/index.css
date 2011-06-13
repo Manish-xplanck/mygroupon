@@ -96,7 +96,7 @@ body.newbie{background-position:50% 326px;}
 #hd .logins .account a{outline:0;}
 #hd .logins .logout,#hd .logins .login,#hd .logins .signup{width:56px;text-align:center;}
 #hd .logins .links a:hover,#hd .logins a.hover{background:#63c5c8;color:#328889;text-decoration:none;font-weight:bold;}
-#logo{padding-top:23px;padding-left:31px;}
+#logo{padding-top:10px;padding-left:10px;}
 #hd .guides{position:absolute;left:354px;top:54px;z-index:4;}
 #hd .city{float:left;width:73px;height:25px;line-height:25px;background:url(i/bg-guides-city.gif) no-repeat 0 0;}
 #hd .city h2{text-align:center;color:#fff;}
@@ -113,7 +113,6 @@ body.newbie{background-position:50% 326px;}
 #hd .city-list .other a:hover{background:#666;color:#399;;text-decoration:none;}
 #nav{position:relative;}
 #nav ul{font-size:16px;font-weight:bold;}
-#logo{padding-top:23px;padding-left:37px;}
 #hd .guides{position:absolute;left:354px;top:54px;z-index:2;}
 #myaccount-menu{display:none;position:absolute;right:56px;top:157px;padding:8px 0 8px;dborder:1px solid #76a045;border-top:0;font-weight:normal;font-size:14px;background-color:#63c5c8;}
 #myaccount-menu li{width:150px;padding:5px 0;border-bottom:1px dashed #47abad;}

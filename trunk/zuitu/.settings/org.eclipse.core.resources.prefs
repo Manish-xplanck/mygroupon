@@ -1,7 +1,12 @@
-#Fri Jun 10 00:43:26 CST 2011
+#Mon Jun 13 15:09:48 CST 2011
 eclipse.preferences.version=1
+encoding//include/template/block_side_ask.html=UTF-8
 encoding//include/template/footer.html=UTF-8
 encoding//include/template/header.html=UTF-8
+encoding//include/template/manage_footer.html=UTF-8
+encoding//include/template/manage_header.html=UTF-8
+encoding//include/template/manage_html_header.html=UTF-8
+encoding//include/template/manage_system_index.html=UTF-8
 encoding//static/css/index.css=UTF-8
 encoding//static/theme/YellowUMZZ/css/index.css=UTF-8
 encoding/<project>=UTF-8
