@@ -1,6 +1,6 @@
 <!--${
 	$ask_con = array('length(comment)>0');
-	if(option_yes('teamask')) { $ask_con[] = 'team_id > 0'; } 
+	if(option_yes('teamask')) { $ask_con[] = 'team_id > 0'; }
 	else { $ask_con['team_id'] = $id; }
 	$ask_count = Table::Count('ask', $ask_con);
 	$asks = DB::LimitQuery('ask', array('condition'=>$ask_con, 'size'=>3, 'order'=>'ORDER BY id DESC'));
@@ -36,7 +36,7 @@
 				<!--{/if}-->
 				<!--{/loop}-->
 				</p>
-				<p class="time">周一至周六 9:00-18:00</p>
+				<p style="text-align: left;">客服电话：15096189729</p>
 			</div>
 		</div>
 	</div>
