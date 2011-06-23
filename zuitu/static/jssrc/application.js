@@ -1,4 +1,4 @@
-var X = {}; 
+var X = {};
 X.hook = function() {
     var pre_init_str = 'x_init_hook_';
     for ( var h in window ) {
@@ -7,7 +7,7 @@ X.hook = function() {
         var func = window[h];
         if ( typeof func == 'function' ) {
             try { func(); }catch(e){}
-        }       
+        }
     }
 };
 
@@ -16,6 +16,7 @@ X.post = function(u) { return X.ajax(u, 'POST'); };
 X.ajax = function(u, method) {
     jQuery.ajax({
         url: u,
+        type: method,
         dataType: "json",
         success: X.json
     });
@@ -27,7 +28,7 @@ X.json = function(r) {
     var data = r['data']['data'];
     if ( type == 'alert' ) {
         alert(data);
-    } else if ( type == 'eval' ) { 
+    } else if ( type == 'eval' ) {
         eval(data);
 	} else if ( type == 'refresh') {
 		window.location.reload();

@@ -2,7 +2,7 @@
 /**
  * @author: shwdai@gmail.com
  */
-class Utility 
+class Utility
 {
     const CHAR_MIX = 0;
     const CHAR_NUM = 1;
@@ -20,9 +20,9 @@ class Utility
         settype($v, 'array');
         foreach( $a AS $key=>$value )
         {
-            if (is_array($value)) { 
+            if (is_array($value)) {
                 $key = strval($value['id']);
-                $value = strval($value['name']); 
+                $value = strval($value['name']);
             }
             $selected = in_array($key, $v) ? 'selected' : null;
             $option .= "<option value='{$key}' {$selected}>".strip_tags($value)."</option>";
@@ -38,7 +38,7 @@ class Utility
 				return true;
 			}
 			list ($user,$domain) = explode('@', $email, 2);
-			if ( $strict && !gethostbyname($domain) 
+			if ( $strict && !gethostbyname($domain)
 					&& !getmxrr($domain,$mxhosts) ){
 				return false;
 			}
@@ -57,7 +57,7 @@ class Utility
 
     static public function CommaTips($a=array(), $v=null) {
         $cval = array();
-        if (is_string($v)) { 
+        if (is_string($v)) {
             $v = preg_split('/[\s,]+/', $v, -1, PREG_SPLIT_NO_EMPTY);
         }
         settype($v, 'array');
@@ -78,9 +78,9 @@ class Utility
         if (is_string($v)) $v = preg_split('/[\s,]+/', $v, -1, PREG_SPLIT_NO_EMPTY);
         settype($v, 'array');
         foreach($a AS $key=>$value) {
-            if (is_array($value)) { 
+            if (is_array($value)) {
                 $key = strval($value['id']);
-                $value = strval($value['name']); 
+                $value = strval($value['name']);
             }
             $checked = in_array($key, $v) ? 'checked' : null;
             $readonly = $m=='fix'?'onclick="return false;"':null;
@@ -95,9 +95,9 @@ class Utility
         if (is_string($v)) $v = preg_split('/[\s,]+/', $v, -1, PREG_SPLIT_NO_EMPTY);
         settype($v, 'array');
         foreach($a AS $key=>$value) {
-            if (is_array($value)) { 
+            if (is_array($value)) {
                 $key = strval($value['id']);
-                $value = strval($value['name']); 
+                $value = strval($value['name']);
             }
             $checked = in_array($key, $v) ? 'checked' : null;
             $cbox .= "<li><input type='radio' name='{$n}' value='{$key}' {$checked} />&nbsp;{$value}</li>";
@@ -119,7 +119,7 @@ class Utility
     {
         if ($key) $a = self::AssColumn($a, $key);
         $ret = array();
-        foreach( $s AS $one ) 
+        foreach( $s AS $one )
         {
             if ( isset($a[$one]) )
                 $ret[$one] = $a[$one];
@@ -132,10 +132,10 @@ class Utility
         $ret = array();
         @list($column, $anc) = preg_split('/[\s\-]/',$column,2,PREG_SPLIT_NO_EMPTY);
         foreach( $a AS $one )
-        {   
+        {
             if ( $null || @$one[ $column ] )
                 $ret[] = @$one[ $column ].($anc?'-'.@$one[$anc]:'');
-        } 
+        }
         return $ret;
     }
 
@@ -147,19 +147,19 @@ class Utility
 
         $ret = array(); settype($a, 'array');
         if ( false == $two_level )
-        {   
+        {
             foreach( $a AS $one )
-            {   
-                if ( is_array($one) ) 
+            {
+                if ( is_array($one) )
                     $ret[ @$one[$column] ] = $one;
                 else
                     $ret[ @$one->$column ] = $one;
-            }   
-        }   
+            }
+        }
         else
-        {   
+        {
             foreach( $a AS $one )
-            {   
+            {
                 if (is_array($one)) {
                     if ( false==isset( $ret[ @$one[$column] ] ) ) {
                         $ret[ @$one[$column] ] = array();
@@ -208,7 +208,7 @@ class Utility
 
     static public function GetPageNo($page='page')
     {
-        $page_no = isset($_GET['page']) 
+        $page_no = isset($_GET['page'])
             ?  abs(intval($_GET['page'])) : 1;
         return $page_no > 0 ? $page_no : 1;
     }
@@ -218,25 +218,25 @@ class Utility
         $c = scandir($d);
         $a = array();
         foreach($c as $o) {
-            if ($o == '.' || $o == '..') 
+            if ($o == '.' || $o == '..')
                 continue;
             $p = $d . '/' . $o;
             $eo = substr($o, strrpos($o, '.') + 1);
             if ( ( empty($e) || in_array($eo, $e))
-                    && is_file($p) 
-                    && is_readable($p)) 
+                    && is_file($p)
+                    && is_readable($p))
             {
                 $a[] = $p;
             }
-            else if( is_dir($p) 
-                    && is_readable($p) 
-                    && true==$r) 
+            else if( is_dir($p)
+                    && is_readable($p)
+                    && true==$r)
             {
                 $u = self::ScanDir($p, $e, $r);
             }
         }
         return $a;
-    } 
+    }
 
     static public function HumanTime($time=null, $forceDate=false)
     {
@@ -305,7 +305,7 @@ class Utility
                 $p = $p0;
             } else if ( $p1 !== FALSE ) {
                 $p = $p1;
-            } 
+            }
 
             $qp2 = false;
             if ( $qp1===0 ) {
@@ -326,12 +326,12 @@ class Utility
             $r[] = $m;
         }
         return $r;
-    } 
+    }
 
-    static public function GetKeyValue($string=null) 
+    static public function GetKeyValue($string=null)
     {
         $csv = Utility::GetCsv($string);
-        $kv = array(); 
+        $kv = array();
         foreach( $csv AS $one ) {
             @list($name, $v) = explode('=', $one, 2);
             if ( $v === null ) $v = true;
@@ -365,9 +365,9 @@ class Utility
 
     static function Random($a=array()) {
         $tv = 0;
-        foreach($a as $k=>$v) { 
+        foreach($a as $k=>$v) {
             if ($v<0) { $a[$k] = $v = 0; }
-            $tv += $v; 
+            $tv += $v;
         }
         if ( $tv == 0 ) return 0;
         $im = (float) 10000/$tv;
@@ -375,7 +375,7 @@ class Utility
         $tv = 0;
         foreach($a AS $k=>$v) {
             $tv += ($v*$im);
-            if ( ceil($tv) >= $r ) 
+            if ( ceil($tv) >= $r )
                 return $k;
         }
         return $k;
@@ -400,7 +400,7 @@ class Utility
 		$body = substr($out, $pos + 4, strlen($out) - ($pos + 4));//page body
 		if(preg_match("/^HTTP\/\d\.\d\s([\d]+)\s.*$/", $status, $matches)){
 			if(intval($matches[1]) / 100 == 2){
-				return $body;  
+				return $body;
 			}else{
 				return false;
 			}
@@ -476,8 +476,8 @@ class Utility
 	}
 
 	static function IsMobile($no) {
-		return preg_match('/^1[3458][\d]{9}$/', $no) 
-			|| preg_match('/^0[\d]{10,11}$/', $no); 
+		return preg_match('/^1[3458][\d]{9}$/', $no)
+			|| preg_match('/^0[\d]{10,11}$/', $no);
 	}
 
 	static function VerifyCode($code=0) {
@@ -490,7 +490,7 @@ class Utility
 	}
 
 	static function CaptchaCreate($size) {
-		$v = new PhpCaptcha(null,100,50);
+		$v = new PhpCaptcha(null,120,40);
 		$v->UseColour(true);
 		$v->SetNumChars(4);
 		$v->Create();

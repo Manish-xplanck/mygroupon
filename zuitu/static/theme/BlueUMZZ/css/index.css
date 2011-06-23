@@ -92,7 +92,7 @@ body.newbie{background-position:50% 326px;}
 #hd .logins .islogin{width:2px;}
 #hd .logins .links a{display:block;height:42px;line-height:42px;color:#fff;font-size:14px;}
 #hd .logins .username{height:42px;line-height:42px;padding:0 1px 0 20px;text-align:center;font-family:Helvetica,arial,sans-serif;color:#333;}
-#hd .logins .account{width:86px;text-align:center;}
+#hd .logins .account{width:90px;text-align:center;}
 #hd .logins .account a{outline:0;}
 #hd .logins .logout,#hd .logins .login,#hd .logins .signup{width:56px;text-align:center;}
 #hd .logins .links a:hover,#hd .logins a.hover{background:#63c5c8;color:#328889;text-decoration:none;font-weight:bold;}
