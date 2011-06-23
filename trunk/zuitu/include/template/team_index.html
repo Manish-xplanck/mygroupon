@@ -14,17 +14,18 @@
             <div class="box-content">
                 <div class="head"><h2>{$category['name']}{$pagetitle}</h2></div>
 			        <form method="get">
-                                   <div id="jqtgss">
-                                        <div id="jqtgssa" style="margin-left: 10px;">
-                	                   <ul>
-                	                      <li>
-                	                 	<span id="gjc">关键字:</span><input type="text" value="{$searchName}" class="hw-input" name="searchName">&nbsp;&nbsp;&nbsp;
-                		时间范围：<input type="text" value="{$start_time}" id="start_time" class="Wdate" name="start_time" onFocus="WdatePicker({isShowClear:false,readOnly:true})"/>&nbsp;至&nbsp;
-                		<input type="text" value="{$search_end_time}" class="Wdate" id="end_time" name="end_time" onFocus="WdatePicker({isShowClear:false,readOnly:true})"/>
-					    &nbsp;<input type="submit" class="formbutton" value="筛选">
-					    </li>
-                	                   </ul>
-					 </div>
+                    	<div id="jqtgss">
+                             <div id="jqtgssa" style="margin-left: 10px;">
+          	               		<ul>
+          	                    	<li>
+             	                 	<span id="gjc">关键字:</span><input type="text" value="{$searchName}" class="hw-input" name="searchName">&nbsp;&nbsp;
+             						时间范围：<input type="text" value="{$start_time}" id="start_time" class="Wdate" name="start_time" onFocus="WdatePicker({isShowClear:false,readOnly:true})"/>
+             						&nbsp;至&nbsp;
+             						<input type="text" value="{$search_end_time}" class="Wdate" id="end_time" name="end_time" onFocus="WdatePicker({isShowClear:false,readOnly:true})"/>
+		    						&nbsp;<input type="submit" class="formbutton" value="筛选">
+		    					</li>
+             	              </ul>
+						</div>
                                    <!-- <div id="jqtgssb"></div>  -->
                                         </div>
                                        </form>
