@@ -22,12 +22,10 @@ function sms_send($phone, $content) {
 	$pass = strval($INI['sms']['pass']);
 	//$pass = strtolower(md5($INI['sms']['pass']));
 	if(null==$user) return true;
-	$content = urlEncode(iconv("UTF-8","GB2312", $content));
-	$api = "http://sms.10086si.com/smsComputer/smsComputersend.asp?zh={$user}&mm={$pass}&hm={$phone}&nr={$content}&dxlbid=18";
+	$charset = mb_detect_encoding($content);
+	$content = urlEncode(iconv($charset, "GB2312", $content));
+	$api = "http://sms.10086si.com/smsComputer/smsComputersend.asp?zh={$user}&mm={$pass}&hm={$phone}&nr={$content}&dxlbid=14";
 	$res = Utility::HttpRequest($api);
-	//echo($api);
-	//echo('result:'.$res);
-	//return ;
 	//return trim(strval($res))=='+OK' ? true : strval($res);
 	return trim(strval($res))=='' ? true : strval($res);
 }
@@ -35,13 +33,13 @@ function sms_send($phone, $content) {
 function sms_secret($mobile, $secret, $enable=true) {
 	global $INI;
 	$funccode = $enable ? '订阅' : '退订';
-	$content = "{$INI['system']['sitename']}，您的手机号：{$mobile} 短信{$funccode}功能认证码：{$secret}。";
+	$content = "{$INI['system']['sitename']}，您的手机号：{$mobile}，手机消息{$funccode}功能认证码：{$secret}。【有效时间20分钟】";
 	sms_send($mobile, $content);
 }
 
 function sms_bind($mobile, $secret) {
 	global $INI;
-	$content = "{$INI['system']['sitename']}，您的手机号：{$mobile} 绑定码：{$secret}。";
+	$content = "{$INI['system']['sitename']}，您的手机号：{$mobile}，绑定码：{$secret}。";
 	sms_send($mobile, $content);
 }
 
