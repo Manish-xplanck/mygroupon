@@ -67,11 +67,11 @@
 					</div>
 					<div class="field">
 						<label>开始时间</label>
-						<input type="text" size="10" name="begin_time" id="team-create-begin-time" class="date" xd="${date('Y-m-d', $team['begin_time'])}" xt="${date('H:i:s', $team['begin_time'])}" value="${date('Y-m-d H:i:s', $team['begin_time'])}" maxLength="10" />
+						<input type="text" size="10" name="begin_time" id="team-create-begin-time" class="date" xd="${date('Y-m-d', $team['begin_time'])}" xt="${date('H:i:s', $team['begin_time'])}" value="${date('Y-m-d H:i:s', $team['begin_time'])}" maxLength="10" onFocus="WdatePicker({isShowClear:false,readOnly:true})"/>
 						<label>结束时间</label>
-						<input type="text" size="10" name="end_time" id="team-create-end-time" class="date" xd="${date('Y-m-d', $team['end_time'])}" xt="${date('H:i:s', $team['end_time'])}" value="${date('Y-m-d H:i:s', $team['end_time'])}" maxLength="10" />
+						<input type="text" size="10" name="end_time" id="team-create-end-time" class="date" xd="${date('Y-m-d', $team['end_time'])}" xt="${date('H:i:s', $team['end_time'])}" value="${date('Y-m-d H:i:s', $team['end_time'])}" maxLength="10" onFocus="WdatePicker({isShowClear:false,readOnly:true})"/>
 						<label>{$INI['system']['couponname']}有效期</label>
-						<input type="text" size="10" name="expire_time" id="team-create-expire-time" class="number" value="${date('Y-m-d', $team['expire_time'])}" maxLength="10" />
+						<input type="text" size="10" name="expire_time" id="team-create-expire-time" class="number" value="${date('Y-m-d', $team['expire_time'])}" maxLength="10" onFocus="WdatePicker({isShowClear:false,readOnly:true})"/>
 						<span class="hint">时间格式：hh:ii:ss (例：14:05:58)，日期格式：YYYY-MM-DD （例：2010-06-10）</span>
 					</div>
 					<div class="field">

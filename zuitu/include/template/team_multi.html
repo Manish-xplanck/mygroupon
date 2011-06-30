@@ -9,7 +9,7 @@
 <!--{/if}-->
 
 <!--{if $order}-->
-<div id="sysmsg-tip" ><div class="sysmsg-tip-top"></div><div class="sysmsg-tip-content">您已经下过订单，但还没有付款。<a href="/order/check.php?id={$order['id']}">查看订单并付款</a><span id="sysmsg-tip-close" class="sysmsg-tip-close">关闭</span></div><div class="sysmsg-tip-bottom"></div></div><div id="deal-default"> 
+<div id="sysmsg-tip" ><div class="sysmsg-tip-top"></div><div class="sysmsg-tip-content">您已经下过订单，但还没有付款。<a href="/order/check.php?id={$order['id']}">查看订单并付款</a><span id="sysmsg-tip-close" class="sysmsg-tip-close">关闭</span></div><div class="sysmsg-tip-bottom"></div></div><div id="deal-default">
 <!--{/if}-->
 
 	<div id="deal-default">
@@ -17,7 +17,7 @@
 		<!--{loop $teams $tindex $team}-->
 			<!--{include block_team_share}-->
 			<div id="deal-intro" class="cf todydeal">
-				<div class=no>${++$mindex}</div> 
+				<div class=no>${++$mindex}</div>
                 <h1><a class="deal-today-link" href="/team.php?id={$team['id']}">今日团购：</a><a href="/team.php?id={$team['id']}">{$team['title']}</a></h1>
                 <div class="main">
                     <div class="deal-buy">
@@ -82,7 +82,7 @@
 					</div>
 					<!--{/if}-->
 				<!--{else}-->
-					<div class="deal-box deal-status deal-status-{$team['state']}" id="deal-status"><div class="deal-buy-{$team['state']}"></div><p class="deal-buy-tip-total">共有 <strong>{$team['now_number']}</strong> 人购买</p></div> 
+					<div class="deal-box deal-status deal-status-{$team['state']}" id="deal-status"><div class="deal-buy-{$team['state']}"></div><p class="deal-buy-tip-total">共有 <strong>{$team['now_number']}</strong> 人购买</p></div>
 				<!--{/if}-->
 				</div>
                 <div class="side">
@@ -98,6 +98,7 @@
 		</div>
     </div>
     <div id="sidebar" style="margin-top:30px;">
+    	<!--{include block_side_kgkl}-->
 		<!--{include block_side_invite}-->
 		<!--{include block_side_bulletin}-->
 		<!--{include block_side_flv}-->
