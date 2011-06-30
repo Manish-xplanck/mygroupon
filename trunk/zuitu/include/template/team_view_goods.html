@@ -3,7 +3,6 @@
 <div id="bdw" class="bdw">
 <div id="bd" class="cf">
 
-
 <!--{if $team['close_time']}-->
 <div id="sysmsg-tip" class="sysmsg-tip-deal-close"><div class="sysmsg-tip-top"></div><div class="sysmsg-tip-content"><div class="deal-close"><div class="focus">抱歉，您来晚了，<br />此商品已经卖光啦。</div><div id="tip-deal-subscribe-body" class="body"><form id="tip-deal-subscribe-form" method="post" action="/subscribe.php" class="validator"><table><tr><td>不想错过明天的热销商品？立刻订阅每日最新热销商品信息：&nbsp;</td><td><input type="text" name="email" class="f-text" value="" require="true" datatype="email" /></td><td>&nbsp;<input class="commit" type="submit" value="订阅" /></td></tr></table></form></div></div><span id="sysmsg-tip-close" class="sysmsg-tip-close">关闭</span></div><div class="sysmsg-tip-bottom"></div></div>
 <!--{/if}-->
@@ -63,7 +62,7 @@
 							<!--{if $team['image2']}-->
 								<a ref="${++$imageindex}" >{$imageindex}</a>
 							<!--{/if}-->
-							</div> 
+							</div>
 						</div>
 						<!--{else}-->
 							<img src="${team_image($team['image'])}"/>
@@ -97,6 +96,7 @@
             </div>
     </div>
     <div id="sidebar">
+    	<!--{include block_side_kgkl}-->
 		<!--{include block_side_bulletin}-->
 		<!--{include block_side_flv}-->
 		<!--{include block_side_ask}-->
