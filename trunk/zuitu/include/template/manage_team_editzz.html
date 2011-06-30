@@ -46,6 +46,17 @@
 						<input type="text" size="10" name="farefree" id="team-create-farefree" class="number" value="${intval($team['farefree'])}" maxLength="6" datatype="money" require="true" />
 						<span class="inputtip">快递费用，免单数量：0表示不免运费，2表示，购买2件免运费</span>
 					</div>
+					<div class="wholetip clear"><h3>2、团购联盟信息</h3></div>
+					<div class="field">
+						<label>是否联盟项目</label>
+						<input type="text" size="10" name="union" id="team-create-union" class="number" value="${intval($team['union'])}" maxLength="6" datatype="money" require="true" />
+						<span class="inputtip">0表示不是团购联盟项目，1表示是团购联盟项目</span>
+					</div>
+					<div class="field">
+						<label>链接地址</label>
+						<input type="text" size="40" name="unionurl" id="team-create-unionurl" class="f-input" value="{$team['unionurl']}" />
+						<span class="inputtip">用于链接跳转的地址</span>
+					</div>
 					<input type="submit" value="好了，提交" name="commit" id="leader-submit" class="formbutton" style="margin:10px 0 0 120px;"/>
 				</form>
                 </div>
