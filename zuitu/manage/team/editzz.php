@@ -18,15 +18,17 @@ else if ( is_post() ) {
 			'bonus',
 			'card',
 			'credit',
-			'farefree'
-			);
+			'farefree',
+			'union',
+			'unionurl'
+		);
 	$table = new Table('team', $team);
 	if ( $team['id'] && $team['id'] == $id ) {
 		$table->SetPk('id', $id);
 		$table->update($insert);
 		Session::Set('notice', '编辑项目杂项信息成功');
 		redirect( WEB_ROOT . "/manage/team/editzz.php?id={$id}");
-	} 
+	}
 	else {
 		Session::Set('error', '编辑项目杂项信息失败');
 		redirect(null);

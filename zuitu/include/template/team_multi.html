@@ -27,7 +27,13 @@
 					<!--{elseif $team['close_time']}-->
                         <p class="deal-price"><strong>{$currency}${moneyit($team['team_price'])}</strong><span class="deal-price-expire"></span></p>
 					<!--{else}-->
-                        <p class="deal-price"><strong>{$currency}${moneyit($team['team_price'])}</strong><span><a ${$team['begin_time']<time()?'href="/team/buy.php?id='.$team['id'].'"':''}><img src="/static/css/i/button-deal-buy.gif" /></a></span></p>
+                        <p class="deal-price"><strong>{$currency}${moneyit($team['team_price'])}</strong><span>
+                        <!--{if ($team['union']=='1')}-->
+                        <a ${$team['begin_time']<time()?'href="'.$team['unionurl'].'"':''} target="_blank">
+                        <!--{else}-->
+                        <a ${$team['begin_time']<time()?'href="/team/buy.php?id='.$team['id'].'"':''}>
+                        <!--{/if}-->
+                        <img src="/static/css/i/button-deal-buy.gif" /></a></span></p>
 					<!--{/if}-->
                     </div>
                     <table class="deal-discount">
