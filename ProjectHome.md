@@ -1,0 +1,1 @@
+This is a open source php groupon project.
